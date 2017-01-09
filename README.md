@@ -7,35 +7,35 @@ is a Yeoman generator for scaffolding PHP projects with an opinionated clean arc
 The main generator creates the base project structure and setup:
 
 * Directory structure
-    ```
-    |-- doc
-    |   `-- dependencies.svg
-    `-- src
-        `-- <Project name>
-            |-- Application
-            |-- Domain
-            |-- Infrastructure
-            |-- Ports
-            `-- Tests
-    ```
+  ```
+  |-- doc
+  |   `-- dependencies.svg
+  `-- src
+      `-- <Project name>
+          |-- Application
+          |-- Domain
+          |-- Infrastructure
+          |-- Ports
+          `-- Tests
+```
 * Composer setup
-    ```
-    composer.json
-    ```
+  ```
+  composer.json
+  ```
 * PHPUnit setup
-    ```
-    phpunit.php
-    phpunit.xml.dist
-    ```
+  ```
+  phpunit.php
+  phpunit.xml.dist
+  ```
 * Configuration files
-    ```
-    .editorconfig
-    .gitattributes
-    .gitignore
-    .travis.yml
-    LICENSE
-    README.md
-    ```
+  ```
+  .editorconfig
+  .gitattributes
+  .gitignore
+  .travis.yml
+  LICENSE
+  README.md
+  ```
 
 Furthermore, the main generator may call additional sub generators on request.
 
