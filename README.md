@@ -1,76 +1,96 @@
 # generator-php
 
-is a Yeoman generator for scaffolding PHP projects with an opinionated clean architecture.
+is a Yeoman generator for scaffolding PHP projects with an opinionated implementation of clean architecture.
 
 ## Main generator
 
 The main generator creates the base project structure and setup:
 
-* Directory structure
-  ```
-  |-- doc
-  |   `-- dependencies.svg
-  `-- src
-      `-- <Project name>
-          |-- Application
-          |-- Domain
-          |-- Infrastructure
-          |-- Ports
-          `-- Tests
+### Files & directories
 ```
-* Composer setup
-  ```
-  composer.json
-  ```
-* PHPUnit setup
-  ```
-  phpunit.php
-  phpunit.xml.dist
-  ```
-* Configuration files
-  ```
-  .editorconfig
-  .gitattributes
-  .gitignore
-  .travis.yml
-  LICENSE
-  README.md
-  ```
+|-- .editorconfig
+|-- .gitattributes
+|-- .gitignore
+|-- .travis.yml
+|-- LICENSE
+|-- README.md
+|-- composer.json
+|-- doc
+|   `-- dependencies.svg
+|-- phpunit.php
+|-- phpunit.xml.dist
+`-- src
+  `-- <Project name>
+      |-- Application
+      |-- Domain
+      |-- Infrastructure
+      `-- Ports
+```
+### Composer setup
 
-Furthermore, the main generator may call additional sub generators on request.
+The default composer dependencies are:
+
+* `php`
+
+The default composer development dependencies are:
+
+* `clue/graph-composer`
+
+### Unit tests
+
+If you enable Unit tests, the following resources are added:
+
+```
+|-- phpunit.php
+|-- phpunit.xml.dist
+`-- src
+  `-- <Project name>
+      `-- Tests
+```
+
+The following composer development dependencies are added:
+
+* `phpunit/phpunit`
 
 ## Subgenerators
 
 ### Code Climate
 
-```
-.codeclimate.yml
-```
-
-The code climate test reporter is added as a composer dev dependency:
+If you enable [code climate](https://codeclimate.com) support (account needed), the following resources are added:
 
 ```
-composer require codeclimate/php-test-reporter
+|-- .codeclimate.yml
+`-- phpmd.xml
 ```
 
-The code climate repository token is added to the Travis CI configuration (`.travis.yml`):
+The following composer development dependencies are added:
+
+* `codeclimate/php-test-reporter`
+
+The following lines are added to the Travis CI configuration (`.travis.yml`):
 
 ```
 
 addons:
     code_climate:
-        repo_token: 9a18c09fbf809a5241ebe8f99da04c2e395055fbb9c43f3a62e8ad022a0db9d3
+        repo_token: <CODE-CLIMATE-REPO-TOKEN-HERE>
  ```
  
-### Coveralls (code coverage)
+### Scrutinizer
 
-The coveralls coverage data reporter is added as a composer dev dependency:
+If you enable [scrutinizer](https://scrutinizer-ci.com/) support (account needed), the following resources are added:
 
 ```
-composer require satooshi/php-coveralls
+`-- .scrutinizer.yml
 ```
+ 
+### Code coverage
 
-Code coverage data submission is added to the Travis CI configuration
+If you enable code coverage support ([Coveralls](https://coveralls.io/) account needed), the following composer development dependencies are added:
+
+* `satooshi/php-coveralls`
+
+Code coverage data submission is added to the Travis CI configuration (`.travis.yml`):
 
 ```
 after_script:
@@ -80,27 +100,33 @@ after_script:
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml; fi;'
 ```
 
-### PHPMD (PHP Mess Detector)
+### Documentation
+
+If you enable documentation support ([Read the Docs](https://readthedocs.org/) account needed), the following resources are added:
 
 ```
-phpmd.xml
+|-- mkdocs.yml
+`-- doc
+    `-- index.md
 ```
 
-### Scrutinizer
+### API documentation
+
+If you enable API documentation support (via phpDox), the following resources are added:
 
 ```
-.scrutinizer.yml
+`-- phpdox.xml.dist
 ```
 
-### Read the docs
+The following composer development dependencies are added:
+
+* `theseer/phpdox`
+* `phploc/phploc`
+* `phpmd/phpmd`
 
 ```
-mkdocs.yml
-doc/index.md
-```
-
-### PHPDox (API documentation)
-
-```
-phpdox.xml.dist
+vendor/bin/phploc.bat --count-tests --progress --log-xml build/phploc.xml src
+vendor/bin/phpmd.bat src xml phpmd.xml --reportfile build/pmd.xml
+vendor/bin/phpunit.bat
+vendor/bin/phpdox.bat 
 ```
