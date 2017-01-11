@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/jkphl/generator-php#readme",
   "files": [
-    "generators/app"
+    "generators/app",
+    "lib"
   ],
   "dependencies": {
     "yeoman-generator": "^1.0.1",

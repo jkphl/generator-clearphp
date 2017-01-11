@@ -1,0 +1,27 @@
+{
+  "name": "<%- vendor %>/<%- project %>",
+  "description": "<%- description %>",<% if(website) { %>
+  "homepage": "<%- website %>",<% } %>
+  "minimum-stability": "<%- stability %>",
+  "license": "<%- license %>",
+  "authors": [
+    {
+      "name": "<%- authorName %>",<% if(authorEmail) { %>
+      "email": "<%- authorEmail %>",<% } if(authorWebsite) { %>
+      "homepage": "<%- authorWebsite %>",<% } %>
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/<%- vendor %>/<%- project %>/issues",
+    "source": "https://github.com/<%- vendor %>/<%- project %>"
+  },
+  "require": {
+    "php": "<%- php %>"
+  }<% if(namespace) { %>,
+  "autoload": {
+    "psr-4": {
+      "<%- namespace %>\\": "src/"
+    }
+  }<% } %>
+}

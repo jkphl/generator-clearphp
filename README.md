@@ -7,6 +7,7 @@ is a Yeoman generator for scaffolding PHP projects with an opinionated implement
 The main generator creates the base project structure and setup:
 
 ### Files & directories
+
 ```
 |-- .editorconfig
 |-- .gitattributes
@@ -26,6 +27,7 @@ The main generator creates the base project structure and setup:
       |-- Infrastructure
       `-- Ports
 ```
+
 ### Composer setup
 
 The default composer dependencies are:
