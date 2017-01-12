@@ -21,6 +21,7 @@
   "homepage": "https://github.com/jkphl/generator-php#readme",
   "files": [
     "generators/app",
+    "generators/main",
     "lib"
   ],
   "dependencies": {
