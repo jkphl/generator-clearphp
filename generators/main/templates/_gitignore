@@ -1,7 +1,0 @@
-/.idea
-/build
-/docs
-/apidocs
-/vendor/*
-/composer.lock
-.env

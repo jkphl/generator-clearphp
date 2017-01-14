@@ -25,6 +25,8 @@
     "lib"
   ],
   "dependencies": {
+    "fs-extra": "^1.0.0",
+    "mkdirp": "^0.5.1",
     "yeoman-generator": "^1.0.1",
     "yosay": "^1.2.1"
   },

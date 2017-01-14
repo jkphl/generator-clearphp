@@ -1,7 +1,7 @@
 <phpunit bootstrap="./phpunit.php">
     <testsuites>
         <testsuite>
-            <directory>./src/Resource/Tests</directory>
+            <directory>./src<% if(module) { %>/<%- module %><% } %>/Tests</directory>
         </testsuite>
     </testsuites>
 
@@ -13,7 +13,7 @@
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
             <exclude>
-                <directory suffix=".php">src/Resource/Tests</directory>
+                <directory suffix=".php">src<% if(module) { %>/<%- module %><% } %>/Tests</directory>
             </exclude>
         </whitelist>
     </filter>

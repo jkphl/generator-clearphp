@@ -150,6 +150,9 @@ module.exports = class extends Generator {
         }];
 
         return this.prompt(prompts).then(function (props) {
+            if (props.module.trim() === '-') {
+                props.module = null;
+            }
             for (let prop in props) {
                 if (props.hasOwnProperty(prop)) {
                     this.config.set(prop, props[prop]);
@@ -169,7 +172,8 @@ module.exports = class extends Generator {
             return;
         }
 
-        this._template('_composer.json', 'composer.json', this.config.getAll());
+        this._templateDirectory('files', '.', this.config.getAll());
+        this._templateDirectory('directories', path.join('src', this.config.get('module') || '.'), this.config.getAll());
     };
 
     /**
