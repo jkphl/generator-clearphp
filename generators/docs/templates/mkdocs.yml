@@ -1,0 +1,8 @@
+site_name: apparat/resource
+site_description: Apparat resource abstraction layer
+site_author: Joschi Kuphal
+repo_url: https://github.com/apparat/resource/
+docs_dir: doc
+pages:
+- Home: 'index.md'
+- To-Do: 'todo.md'

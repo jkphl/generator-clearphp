@@ -4,7 +4,23 @@ const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
 const chalk = require('chalk');
+const validator = require('validator');
 const spawn = require('child_process').spawn;
+
+/**
+ * Test whether a string is a valid PHP namespace
+ *
+ * @param {String} namespace Namespace
+ * @param {Boolean} empty Namespace may be empty
+ * @return {Boolean} Namespace is valid
+ */
+function isNamespace(namespace, empty) {
+    if (typeof namespace !== 'string') {
+        return false;
+    }
+    const n = namespace.trim();
+    return n.length ? /^[A-Z][a-z0-9]*$/.test(n) : !!empty;
+}
 
 module.exports = class extends Generator {
     /**
@@ -53,31 +69,34 @@ module.exports = class extends Generator {
             name: 'vendor',
             message: 'What\'s the vendor key (Github profile / organization)?',
             default: dir[0],
-            validate: function (name) {
-                return ('' + name).length ? true : 'The vendor key cannot be empty!';
+            validate: function (vendor) {
+                return vendor.trim().length ? true : 'The vendor key cannot be empty!';
             }
         }, {
             name: 'project',
             message: 'What\'s the project key?',
             default: dir[1],
-            validate: function (name) {
-                return ('' + name).length ? true : 'The project key cannot be empty!';
+            validate: function (project) {
+                return project.trim().length ? true : 'The project key cannot be empty!';
             }
         }, {
             name: 'description',
             message: 'Please describe your project',
-            validate: function (name) {
-                return ('' + name).length ? true : 'The project description cannot be empty!';
+            validate: function (description) {
+                return description.trim().length ? true : 'The project description cannot be empty!';
             }
         }, {
             name: 'website',
             message: 'What\'s the project homepage?',
+            validate: function (url) {
+                return (url).length ? (validator.isURL(url) || 'The project homepage must be a valid URL or empty!') : true;
+            }
         }, {
             name: 'license',
             message: 'What\'s the project license?',
             default: 'MIT',
-            validate: function (name) {
-                return ('' + name).length ? true : 'The project license cannot be empty!';
+            validate: function (license) {
+                return license.trim().length ? true : 'The project license cannot be empty!';
             }
         }, {
             name: 'stability',
@@ -86,7 +105,23 @@ module.exports = class extends Generator {
             choices: ['stable', 'RC', 'beta', 'alpha', 'dev'],
         }, {
             name: 'namespace',
-            message: 'What\'s your project\'s main PHP namespace?'
+            message: 'What\'s your project\'s main PHP namespace?',
+            validate: function (namespace) {
+                return (namespace.trim().length && isNamespace(namespace, true)) || 'The project main PHP namespace must be valid!';
+            }
+        }, {
+            name: 'module',
+            message: 'What\'s the module name of your project (dash for none)?',
+            default: function (answers) {
+                return answers.project.substr(0, 1).toUpperCase() + answers.project.substr(1).toLowerCase();
+            },
+            validate: function (module) {
+                const m = module.trim();
+                if (m == '-') {
+                    return true;
+                }
+                return m.length ? (isNamespace(module, true) || 'The project module name must be valid or empty!') : true;
+            }
         }, {
             name: 'php',
             message: 'What\'s the project\'s PHP version requirement?',
@@ -98,14 +133,20 @@ module.exports = class extends Generator {
             name: 'authorName',
             message: 'What\'s the author\'s name?',
             validate: function (name) {
-                return ('' + name).length ? true : 'The author name cannot be empty!';
+                return name.trim().length ? true : 'The author name cannot be empty!';
             }
         }, {
             name: 'authorEmail',
-            message: 'What\'s the author\'s email address?'
+            message: 'What\'s the author\'s email address?',
+            validate: function (email) {
+                return email.trim().length ? (validator.isEmail(email) || 'The project author\'s email address must be valid or empty!') : true;
+            }
         }, {
             name: 'authorWebsite',
-            message: 'What\'s the author\'s website?'
+            message: 'What\'s the author\'s website?',
+            validate: function (url) {
+                return (url).length ? (validator.isURL(url) || 'The project author\'s website must be a valid URL or empty!') : true;
+            }
         }];
 
         return this.prompt(prompts).then(function (props) {
@@ -129,6 +170,14 @@ module.exports = class extends Generator {
         }
 
         this._template('_composer.json', 'composer.json', this.config.getAll());
+    };
+
+    /**
+     * Writing generator specific files
+     */
+    writing() {
+        // Create the documentation directory
+        this._mkdirp('doc');
     };
 
     /**

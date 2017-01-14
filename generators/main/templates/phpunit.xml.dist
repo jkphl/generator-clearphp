@@ -1,0 +1,20 @@
+<phpunit bootstrap="./phpunit.php">
+    <testsuites>
+        <testsuite>
+            <directory>./src/Resource/Tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <logging>
+        <log type="coverage-xml" target="build/logs/coverage/xml"/>
+    </logging>
+
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+            <exclude>
+                <directory suffix=".php">src/Resource/Tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

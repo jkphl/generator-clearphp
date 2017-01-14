@@ -13,6 +13,7 @@ The main generator creates the base project structure and setup:
 |-- .gitattributes
 |-- .gitignore
 |-- .travis.yml
+|-- CHANGELOG.md
 |-- LICENSE
 |-- README.md
 |-- composer.json
@@ -85,6 +86,15 @@ If you enable [scrutinizer](https://scrutinizer-ci.com/) support (account needed
 ```
 `-- .scrutinizer.yml
 ```
+
+Code coverage data submission to Scrutinizer is added to the Travis CI configuration (`.travis.yml`):
+
+```
+after_script:
+  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi;'
+  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml; fi;'
+```
+
  
 ### Code coverage
 
@@ -92,14 +102,12 @@ If you enable code coverage support ([Coveralls](https://coveralls.io/) account 
 
 * `satooshi/php-coveralls`
 
-Code coverage data submission is added to the Travis CI configuration (`.travis.yml`):
+Code coverage data submission to Coveralls is added to the Travis CI configuration (`.travis.yml`):
 
 ```
 after_script:
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v; fi;'
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then vendor/bin/test-reporter; fi;'
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi;'
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml; fi;'
 ```
 
 ### Documentation
@@ -109,7 +117,8 @@ If you enable documentation support ([Read the Docs](https://readthedocs.org/) a
 ```
 |-- mkdocs.yml
 `-- doc
-    `-- index.md
+    |-- index.md
+    `-- todo.md
 ```
 
 ### API documentation
