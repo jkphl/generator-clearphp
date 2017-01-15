@@ -46,6 +46,9 @@ module.exports = class extends Generator {
             const child = spawn('php', ['-r', "preg_match('/^\\d+(\\.\\d+)*/', PHP_VERSION, $phpVersion); echo $phpVersion[0];"])
             child.stdout.on('data', (chunk) => this.php += chunk.toString());
             child.on('close', done);
+
+            // Mixin the git subgenerator
+            this.composeWith(require.resolve('../git/_index.js'));
         }
     }
 
