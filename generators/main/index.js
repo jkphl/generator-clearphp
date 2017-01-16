@@ -6,6 +6,7 @@ const semver = require('semver');
 const chalk = require('chalk');
 const validator = require('validator');
 const spawn = require('child_process').spawn;
+const licenses = require('generator-license').licenses;
 
 /**
  * Test whether a string is a valid PHP namespace
@@ -103,9 +104,8 @@ module.exports = class extends Generator {
             name: 'license',
             message: 'What\'s the project license?',
             default: this.config.get('license') || 'MIT',
-            validate: function (license) {
-                return license.trim().length ? true : 'The project license cannot be empty!';
-            }
+            type: 'list',
+            choices: licenses,
         }, {
             name: 'stability',
             message: 'What\'s the minimum stability for project dependencies?',
@@ -170,6 +170,15 @@ module.exports = class extends Generator {
                 }
             }
             this.config.save();
+
+            // Mix in the license generator
+            this.composeWith(require.resolve('generator-license'), {
+                name: props.authorName,
+                email: props.authorEmail,
+                website: props.authorWebsite,
+                // year: '1945', // (optional) License year (defaults to current year)
+                license: props.license
+            });
         }.bind(this));
     }
 
