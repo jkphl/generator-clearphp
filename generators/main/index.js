@@ -32,10 +32,10 @@ module.exports = class extends Generator {
             if (this.options.nested) {
                 this.log(chalk.yellow('Skipping the "main" generator as it has already run before ...'));
             } else {
-                this.log(yosay('HAH! I\'m skipping the "main" subgenerator of jkphl\'s PHP project kickstarter because it has already been run before!'));
+                this.log(yosay('YO! I\'m skipping the "main" subgenerator of jkphl\'s PHP project kickstarter because it has already been run before!'));
             }
         } else if (!this.options.nested) {
-            this.log(yosay('WELCOME! You\'re using the "main" subgenerator of jkphl\'s PHP project kickstarter.'));
+            this.log(yosay('WELCOME! You\'re using jkphl\'s PHP project kickstarter.'));
         }
         this.log();
 
@@ -47,8 +47,11 @@ module.exports = class extends Generator {
             child.stdout.on('data', (chunk) => this.php += chunk.toString());
             child.on('close', done);
 
-            // Mixin the git subgenerator
-            this.composeWith(require.resolve('../git/_index.js'));
+            // If this is not a nested call
+            if (!this.options.nested) {
+                // Mixin the git subgenerator
+                this.composeWith(require.resolve('../git/_index.js'), { nested: true });
+            }
         }
     }
 
@@ -71,53 +74,55 @@ module.exports = class extends Generator {
         const prompts = [{
             name: 'vendor',
             message: 'What\'s the vendor key (Github profile / organization)?',
-            default: dir[0],
+            default: this.config.get('vendor') || dir[0],
             validate: function (vendor) {
                 return vendor.trim().length ? true : 'The vendor key cannot be empty!';
             }
         }, {
             name: 'project',
             message: 'What\'s the project key?',
-            default: dir[1],
+            default: this.config.get('project') || dir[1],
             validate: function (project) {
                 return project.trim().length ? true : 'The project key cannot be empty!';
             }
         }, {
             name: 'description',
             message: 'Please describe your project',
+            default: this.config.get('description') || null,
             validate: function (description) {
                 return description.trim().length ? true : 'The project description cannot be empty!';
             }
         }, {
             name: 'website',
             message: 'What\'s the project homepage?',
+            default: this.config.get('website') || null,
             validate: function (url) {
                 return (url).length ? (validator.isURL(url) || 'The project homepage must be a valid URL or empty!') : true;
             }
         }, {
             name: 'license',
             message: 'What\'s the project license?',
-            default: 'MIT',
+            default: this.config.get('license') || 'MIT',
             validate: function (license) {
                 return license.trim().length ? true : 'The project license cannot be empty!';
             }
         }, {
             name: 'stability',
             message: 'What\'s the minimum stability for project dependencies?',
+            default: this.config.get('stability') || 'stable',
             type: 'list',
             choices: ['stable', 'RC', 'beta', 'alpha', 'dev'],
         }, {
             name: 'namespace',
             message: 'What\'s your project\'s main PHP namespace?',
+            default: (answers) => this.config.get('namespace') || (answers.vendor.substr(0, 1).toUpperCase() + answers.vendor.substr(1).toLowerCase()),
             validate: function (namespace) {
                 return (namespace.trim().length && isNamespace(namespace, true)) || 'The project main PHP namespace must be valid!';
             }
         }, {
             name: 'module',
             message: 'What\'s the module name of your project (dash for none)?',
-            default: function (answers) {
-                return answers.project.substr(0, 1).toUpperCase() + answers.project.substr(1).toLowerCase();
-            },
+            default: (answers) => this.config.get('module') || (answers.project.substr(0, 1).toUpperCase() + answers.project.substr(1).toLowerCase()),
             validate: function (module) {
                 const m = module.trim();
                 if (m == '-') {
@@ -128,25 +133,28 @@ module.exports = class extends Generator {
         }, {
             name: 'php',
             message: 'What\'s the project\'s PHP version requirement?',
-            default: this.php,
+            default: this.config.get('php') || this.php,
             validate: function (version) {
                 return (semver.valid(version) || semver.validRange(version)) ? true : 'Please enter a valid semver value (range)!';
             }
         }, {
             name: 'authorName',
             message: 'What\'s the author\'s name?',
+            default: this.config.get('authorName') || null,
             validate: function (name) {
                 return name.trim().length ? true : 'The author name cannot be empty!';
             }
         }, {
             name: 'authorEmail',
             message: 'What\'s the author\'s email address?',
+            default: this.config.get('authorEmail') || null,
             validate: function (email) {
                 return email.trim().length ? (validator.isEmail(email) || 'The project author\'s email address must be valid or empty!') : true;
             }
         }, {
             name: 'authorWebsite',
             message: 'What\'s the author\'s website?',
+            default: this.config.get('authorWebsite') || null,
             validate: function (url) {
                 return (url).length ? (validator.isURL(url) || 'The project author\'s website must be a valid URL or empty!') : true;
             }
@@ -200,7 +208,7 @@ module.exports = class extends Generator {
         this.log.info(chalk.yellow('Please be patient while composer downloads and installs the project dependencies ...'));
         this.log();
         this.spawnCommandSync('composer', ['config', 'repositories.graph-composer', 'git', 'https://github.com/jkphl/graph-composer']);
-        this.spawnCommandSync('composer', ['require', '--dev', 'clue/graph-composer:dev-master']);
+        this.spawnCommandSync('composer', ['require', '--dev', 'clue/graph-composer:dev-master', 'phpunit/phpunit']);
         // this.spawnCommandSync('composer', ['install']);
         this.log();
 

@@ -30,15 +30,17 @@ module.exports = class extends Generator {
         const prompts = [{
             name: 'git',
             message: 'What\'s the Git repository URL for this project?',
+            default: this.config.get('git') || null,
             validate: function (url) {
-                return (url).length ? (validator.isURL(url) || 'The git repository URL must be a valid URL or empty!') : true;
+                const isURL = validator.isURL(url, { protocols: ['http', 'https', 'ssh'] }) || /^[a-z0-9]+@[a-z0-9]+\.[a-z]+:.+$/i.test(url);
+                return (url).length ? (isURL || 'The git repository URL must be a valid URL or empty!') : true;
             }
         }];
 
         return this.prompt(prompts).then(function (props) {
             for (let prop in props) {
                 if (props.hasOwnProperty(prop)) {
-                    this.config.set(prop, props[prop]);
+                    this.config.set(prop, props[prop].trim());
                 }
             }
             this.config.save();
@@ -51,7 +53,7 @@ module.exports = class extends Generator {
      * @type {Object}
      */
     configuring() {
-        if (this.abort) {
+        if (this.abort || !this.config.get('git').length) {
             return;
         }
 
@@ -69,7 +71,8 @@ module.exports = class extends Generator {
         }
 
         // Initialize a git repository
-        if (this.git) {
+        const git = this.config.get('git');
+        if (git) {
             var that = this;
             var done = this.async();
 
@@ -78,7 +81,7 @@ module.exports = class extends Generator {
                 if (!error) {
 
                     var setupGit = function () {
-                        exec('`which git` remote add origin "' + that.git + '" && `which git` config core.filemode false', function (error, stdout, stderr) {
+                        exec('`which git` remote add origin "' + git + '" && `which git` config core.filemode false', function (error, stdout, stderr) {
 
                             // Mark the generator as run
                             that._setRun('git');
