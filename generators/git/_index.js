@@ -33,7 +33,7 @@ module.exports = class extends Generator {
             default: this.config.get('git') || null,
             validate: function (url) {
                 const isURL = validator.isURL(url, { protocols: ['http', 'https', 'ssh'] }) || /^[a-z0-9]+@[a-z0-9]+\.[a-z]+:.+$/i.test(url);
-                return (url).length ? (isURL || 'The git repository URL must be a valid URL or empty!') : true;
+                return url.length ? (isURL || 'The git repository URL must be a valid URL or empty!') : true;
             }
         }];
 
@@ -57,6 +57,7 @@ module.exports = class extends Generator {
             return;
         }
 
+        // Copy files
         this._templateDirectory('files', '.', this.config.getAll());
     };
 

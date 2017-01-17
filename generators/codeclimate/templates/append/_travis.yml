@@ -1,0 +1,4 @@
+
+addons:
+  code_climate:
+    repo_token: <%- codeclimate %>

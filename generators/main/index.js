@@ -192,6 +192,7 @@ module.exports = class extends Generator {
             return;
         }
 
+        // Copy files
         this._templateDirectory('files', '.', this.config.getAll());
         this._templateDirectory('directories', path.join('src', this.config.get('module') || '.'), this.config.getAll());
     };
@@ -218,7 +219,6 @@ module.exports = class extends Generator {
         this.log();
         this.spawnCommandSync('composer', ['config', 'repositories.graph-composer', 'git', 'https://github.com/jkphl/graph-composer']);
         this.spawnCommandSync('composer', ['require', '--dev', 'clue/graph-composer:dev-master', 'phpunit/phpunit']);
-        // this.spawnCommandSync('composer', ['install']);
         this.log();
 
         // Mark the generator as run

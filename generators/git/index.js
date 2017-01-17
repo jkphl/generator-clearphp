@@ -20,7 +20,7 @@ module.exports = class extends Generator {
         this.log();
 
         if (!this.abort) {
-            // Mixin the main generator if it hasn't run before (and this is not a nested call
+            // Mixin the main generator if it hasn't run before (and this is not a nested call)
             if (!this.options.nested && !this._hasRunBefore('main')) {
                 this.composeWith(require.resolve('../main'), { nested: true });
             }
