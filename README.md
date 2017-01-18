@@ -73,7 +73,8 @@ The following composer development dependencies are added:
 The following lines are added to the Travis CI configuration (`.travis.yml`):
 
 ```
-
+after_script:
+  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then vendor/bin/test-reporter; fi;'
 addons:
     code_climate:
         repo_token: <CODE-CLIMATE-REPO-TOKEN-HERE>
@@ -107,7 +108,6 @@ Code coverage data submission to Coveralls is added to the Travis CI configurati
 ```
 after_script:
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v; fi;'
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then vendor/bin/test-reporter; fi;'
 ```
 
 ### Documentation

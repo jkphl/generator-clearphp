@@ -1,3 +1,2 @@
-addons:
-  code_climate:
-    repo_token: <%- codeclimate %>
+after_script:
+  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v; fi;'
