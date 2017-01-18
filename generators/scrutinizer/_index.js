@@ -57,6 +57,7 @@ module.exports = class extends Generator {
         this._templateDirectory('files', '.', this.config.getAll());
 
         // Append files
+        this._appendTemplate('append/_gitattributes', '.gitattributes', this.config.getAll());
         this._configureYAMLTemplate('append/_travis.yml', '.travis.yml', this.config.getAll());
 
         // Mark the generator as run
