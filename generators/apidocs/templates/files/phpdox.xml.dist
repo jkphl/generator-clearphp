@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpdox xmlns="http://xml.phpdox.net/config" silent="false">
     <bootstrap/>
-    <project name="apparat/resource" source="${basedir}/src" workdir="${basedir}/build/phpdox/xml">
+    <project name="<%- vendor %>/<%- project %>" source="${basedir}/src" workdir="${basedir}/build/phpdox/xml">
         <collector publiconly="false" backend="parser" encoding="auto">
             <include mask="*.php"/>
             <exclude mask="*Test.php"/>

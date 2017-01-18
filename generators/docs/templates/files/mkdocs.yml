@@ -1,0 +1,8 @@
+site_name: <%- vendor %>/<%- project %>
+site_description: <%- description %>
+site_author: <%- authorName %>
+repo_url: <%- git %>
+docs_dir: doc
+pages:
+- Home: 'index.md'
+- To-Do: 'todo.md'

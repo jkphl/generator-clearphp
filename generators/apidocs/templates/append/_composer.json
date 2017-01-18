@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "phploc": "vendor/bin/phploc --count-tests --progress --log-xml ./build/phploc.xml src",
+    "phpmd": "vendor/bin/phpmd src xml phpmd.xml --reportfile build/pmd.xml",
+    "phpunit": "vendor/bin/phpunit,",
+    "phpdox": "vendor/bin/phpdox",
+    "build": [
+      "@phploc",
+      "@phpmd",
+      "@phpunit",
+      "@phpdox"
+    ]
+  }
+}
