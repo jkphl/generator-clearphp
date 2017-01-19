@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpdox xmlns="http://xml.phpdox.net/config" silent="false">
     <bootstrap/>
-    <project name="<%- vendor %>/<%- project %>" source="${basedir}/src" workdir="${basedir}/build/phpdox/xml">
+    <project name="<%- vendor %>/<%- project %>" source="${basedir}/src" workdir="${basedir}/build/phpdox">
         <collector publiconly="false" backend="parser" encoding="auto">
             <include mask="*.php"/>
             <exclude mask="*Test.php"/>
             <inheritance resolve="true"/>
         </collector>
 
-        <generator output="${basedir}/docs">
-            <enrich base="${basedir}/build/logs">
+        <generator output="${basedir}/apidocs">
+            <enrich base="${basedir}/build">
                 <source type="phploc"/>
                 <source type="git">
                     <git binary="git" />
@@ -17,14 +17,14 @@
                 </source>
                 <!--
                 <source type="phpcs">
-                    <file name="logs/phpcs.xml" />
+                    <file name="phpcs.xml" />
                 </source>
                 <source type="pmd">
-                    <file name="pmd.xml" />
+                    <file name="phpmd.xml" />
                 </source>
                 -->
                 <source type="phpunit">
-                    <coverage path="coverage/xml" />
+                    <coverage path="coverage" />
                 </source>
             </enrich>
             <build engine="html" enabled="true" output="html">

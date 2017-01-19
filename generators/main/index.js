@@ -50,8 +50,13 @@ module.exports = class extends Generator {
 
             // If this is not a nested call
             if (!this.options.nested) {
-                // Mixin the git subgenerator
+                // Mixin the other subgenerator
                 this.composeWith(require.resolve('../git/_index.js'), { nested: true });
+                this.composeWith(require.resolve('../codeclimate/_index.js'), { nested: true });
+                this.composeWith(require.resolve('../scrutinizer/_index.js'), { nested: true });
+                this.composeWith(require.resolve('../coverage/_index.js'), { nested: true });
+                this.composeWith(require.resolve('../docs/_index.js'), { nested: true });
+                this.composeWith(require.resolve('../apidocs/_index.js'), { nested: true });
             }
         }
     }
