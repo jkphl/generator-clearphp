@@ -7,6 +7,6 @@ module.exports = class extends Generator {
      */
     initializing() {
         // Include subgenerators
-        this.composeWith(require.resolve('../main'));
+        this.composeWith(require.resolve('../main'), { run: 'all' });
     }
 };
