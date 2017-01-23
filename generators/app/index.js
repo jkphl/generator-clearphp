@@ -1,12 +1,37 @@
-const Generator = require('../../lib/JkphlGenerator.js');
+const PhpGenerator = require('../../lib/PhpGenerator.js');
 const yosay = require('yosay');
 
-module.exports = class extends Generator {
+module.exports = class extends PhpGenerator {
     /**
-     * Initialization
+     * Constructor
+     *
+     * @param {String|Array} args Arguments
+     * @param {Object} options Options
+     */
+    constructor(args, options) {
+        super(args, Object.assign(options, { run: 'all' }));
+    }
+
+    /**
+     * Initializing
      */
     initializing() {
-        // Include subgenerators
-        this.composeWith(require.resolve('../main'), { run: 'all' });
+        super.initializing();
     }
+
+    /**
+     * Prompting
+     */
+    prompting() {
+        super.prompting();
+    }
+
+    /**
+     * Configuration preparations
+     *
+     * @type {Object}
+     */
+    configuring() {
+        super.configuring();
+    };
 };

@@ -1,4 +1,4 @@
-const Generator = require('../../lib/JkphlGenerator.js');
+const PhpGenerator = require('../../lib/PhpGenerator.js');
 const yosay = require('yosay');
 const fs = require('fs');
 const path = require('path');
@@ -23,7 +23,7 @@ function isNamespace(namespace, empty) {
     return n.length ? /^[A-Z][a-z0-9]*$/.test(n) : !!empty;
 }
 
-module.exports = class extends Generator {
+module.exports = class extends PhpGenerator {
     /**
      * Initialization
      */

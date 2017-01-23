@@ -1,8 +1,8 @@
-const Generator = require('../../lib/JkphlGenerator.js');
+const PhpGenerator = require('../../lib/PhpGenerator.js');
 const yosay = require('yosay');
 const chalk = require('chalk');
 
-module.exports = class extends Generator {
+module.exports = class extends PhpGenerator {
     /**
      * Initialization
      */
