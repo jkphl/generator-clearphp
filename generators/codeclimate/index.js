@@ -1,32 +1,60 @@
 const PhpGenerator = require('../../lib/PhpGenerator.js');
 const yosay = require('yosay');
-const chalk = require('chalk');
 
 module.exports = class extends PhpGenerator {
     /**
-     * Initialization
+     * Constructor
+     *
+     * @param {String|Array} args Arguments
+     * @param {Object} options Options
+     */
+    constructor(args, options) {
+        super(args, Object.assign(options, { run: 'codeclimate' }));
+    }
+
+    /**
+     * Initializing
      */
     initializing() {
-        this.abort = this._hasRunBefore('codeclimate');
-        if (this.abort) {
-            if (this.options.nested) {
-                this.log(chalk.yellow('Skipping the "codeclimate" generator as it has already run before ...'));
-            } else {
-                this.log(yosay('YO! I\'m skipping the "codeclimate" subgenerator of jkphl\'s PHP project kickstarter because it has already been run before!'));
-            }
-        } else if (!this.options.nested) {
-            this.log(yosay('WELCOME! You\'re using the "codeclimate" subgenerator of jkphl\'s PHP project kickstarter.'));
-        }
-        this.log();
+        return super.initializing();
+    }
 
-        if (!this.abort) {
-            // Mixin the git generator if it hasn't run before (and this is not a nested call)
-            if (!this.options.nested && !this._hasRunBefore('git')) {
-                console.log('compose with git');
-                this.composeWith(require.resolve('../git'), { nested: true });
-            }
+    /**
+     * Prompting
+     */
+    prompting() {
+        return super.prompting();
+    }
 
-            this.composeWith(require.resolve('./_index.js'));
-        }
+    /**
+     * Configuration preparations
+     *
+     * @type {Object}
+     */
+    configuring() {
+        return super.configuring();
+    };
+
+    /**
+     * Writing files
+     *
+     * @type {Object}
+     */
+    writing() {
+        return super.writing();
+    };
+
+    /**
+     * Installing
+     */
+    install() {
+        return super.install();
+    }
+
+    /**
+     * End
+     */
+    end() {
+        return super.end();
     }
 };

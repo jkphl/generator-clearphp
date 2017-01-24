@@ -1,31 +1,60 @@
 const PhpGenerator = require('../../lib/PhpGenerator.js');
 const yosay = require('yosay');
-const chalk = require('chalk');
 
 module.exports = class extends PhpGenerator {
     /**
-     * Initialization
+     * Constructor
+     *
+     * @param {String|Array} args Arguments
+     * @param {Object} options Options
+     */
+    constructor(args, options) {
+        super(args, Object.assign(options, { run: 'git' }));
+    }
+
+    /**
+     * Initializing
      */
     initializing() {
-        this.abort = this._hasRunBefore('git');
-        if (this.abort) {
-            if (this.options.nested) {
-                this.log(chalk.yellow('Skipping the "git" generator as it has already run before ...'));
-            } else {
-                this.log(yosay('YO! I\'m skipping the "git" subgenerator of jkphl\'s PHP project kickstarter because it has already been run before!'));
-            }
-        } else if (!this.options.nested) {
-            this.log(yosay('WELCOME! You\'re using the "git" subgenerator of jkphl\'s PHP project kickstarter.'));
-        }
-        this.log();
+        return super.initializing();
+    }
 
-        if (!this.abort) {
-            // Mixin the main generator if it hasn't run before (and this is not a nested call)
-            if (!this.options.nested && !this._hasRunBefore('main')) {
-                this.composeWith(require.resolve('../main'), { nested: true });
-            }
+    /**
+     * Prompting
+     */
+    prompting() {
+        return super.prompting();
+    }
 
-            this.composeWith(require.resolve('./_index.js'));
-        }
+    /**
+     * Configuration preparations
+     *
+     * @type {Object}
+     */
+    configuring() {
+        return super.configuring();
+    };
+
+    /**
+     * Writing files
+     *
+     * @type {Object}
+     */
+    writing() {
+        return super.writing();
+    };
+
+    /**
+     * Installing
+     */
+    install() {
+        return super.install();
+    }
+
+    /**
+     * End
+     */
+    end() {
+        return super.end();
     }
 };

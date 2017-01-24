@@ -43,4 +43,18 @@ module.exports = class extends PhpGenerator {
     writing() {
         return super.writing();
     };
+
+    /**
+     * Installing
+     */
+    install() {
+        return super.install();
+    }
+
+    /**
+     * End
+     */
+    end() {
+        return super.end();
+    }
 };
