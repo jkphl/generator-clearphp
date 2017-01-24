@@ -16,14 +16,14 @@ module.exports = class extends PhpGenerator {
      * Initializing
      */
     initializing() {
-        super.initializing();
+        return super.initializing();
     }
 
     /**
      * Prompting
      */
     prompting() {
-        super.prompting();
+        return super.prompting();
     }
 
     /**
@@ -32,6 +32,15 @@ module.exports = class extends PhpGenerator {
      * @type {Object}
      */
     configuring() {
-        super.configuring();
+        return super.configuring();
+    };
+
+    /**
+     * Writing files
+     *
+     * @type {Object}
+     */
+    writing() {
+        return super.writing();
     };
 };

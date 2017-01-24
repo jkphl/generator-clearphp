@@ -71,69 +71,6 @@ module.exports = class extends Generator {
             return;
         }
 
-        // Initialize a git repository
-        const git = this.config.get('git');
-        if (git) {
-            var that = this;
-            var done = this.async();
 
-            // (Re)Initialize the Git repository
-            exec('`which git` init', function (error, stdout, stderr) {
-                if (!error) {
-
-                    var setupGit = function () {
-                        exec('`which git` remote add origin "' + git + '" && `which git` config core.filemode false', function (error, stdout, stderr) {
-
-                            // Mark the generator as run
-                            that._setRun('git');
-
-                            done(error);
-                        });
-                    };
-
-                    // Look for existing origin entries
-                    exec('`which git` remote -v', function (error, stdout, stderr) {
-                        if (!error) {
-                            if (stdout.length) {
-                                for (var l = 0, lines = stdout.split('\n'), removeOrigin = false; l < lines.length; ++l) {
-                                    if (lines[l].indexOf('origin') === 0) {
-                                        removeOrigin = true;
-                                        break;
-                                    }
-                                }
-
-                                // If there's another origin entry: Remove it before setting up the repo
-                                if (removeOrigin) {
-                                    exec('`which git` remote rm origin', function (error, stdout, stderr) {
-                                        if (error) {
-                                            done(error);
-                                        } else {
-
-                                            // Setup the repo
-                                            setupGit();
-                                        }
-                                    });
-
-                                } else {
-
-                                    // Setup the repo
-                                    setupGit();
-                                }
-
-                            } else {
-                                // Setup the repo
-                                setupGit();
-                            }
-
-                        } else {
-                            done(error);
-                        }
-                    });
-
-                } else {
-                    done(error);
-                }
-            });
-        }
     };
 };
