@@ -12,6 +12,12 @@
       "role": "Developer"
     }
   ],
+  "repositories": {
+    "graph-composer": {
+      "type": "git",
+      "url": "https://github.com/jkphl/graph-composer"
+    }
+  },
   "require": {
     "php": "<%- php %>"
   }<% if(namespace) { %>,
