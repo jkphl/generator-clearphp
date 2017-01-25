@@ -19,10 +19,10 @@
                 <source type="phpcs">
                     <file name="phpcs.xml" />
                 </source>
+                -->
                 <source type="pmd">
                     <file name="phpmd.xml" />
                 </source>
-                -->
                 <source type="phpunit">
                     <coverage path="coverage" />
                 </source>

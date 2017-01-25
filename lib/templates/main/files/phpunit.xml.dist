@@ -6,7 +6,7 @@
     </testsuites>
 
     <logging>
-        <log type="coverage-xml" target="build/logs/coverage/xml"/>
+        <log type="coverage-xml" target="build/coverage"/>
     </logging>
 
     <filter>

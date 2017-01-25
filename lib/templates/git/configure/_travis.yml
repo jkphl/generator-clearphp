@@ -14,7 +14,7 @@ matrix:
 
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer install --no-interaction --prefer-source --dev
+  - travis_retry composer install --no-interaction --prefer-source
   - touch .env
   - if [ "$TRAVIS_PHP_VERSION" == "hhvm" ]; then echo 'date.timezone = Europe/Berlin' >> /etc/hhvm/php.ini; fi;
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then echo 'date.timezone = Europe/Berlin' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini; fi;

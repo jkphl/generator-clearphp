@@ -2,6 +2,16 @@
 
 is a Yeoman generator for scaffolding PHP projects with an opinionated implementation of clean architecture.
 
+## To-Do
+
+* [x] main
+* [x] git
+* [x] codeclimate
+* [ ] scrutiziner
+* [x] coverage
+* [ ] docs
+* [x] apidocs
+
 ## Main generator
 
 The main generator creates the base project structure and setup:
