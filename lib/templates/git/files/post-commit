@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Add the dependency graph to the index in case it has just been created
+if [ "$(git ls-files --others --exclude-standard | grep 'dependencies.svg')" != "" ] ; then
+	git add 'doc/dependencies.svg'
+fi
+
+# Amend the most recent commit and add the new dependency graph
+if [ "$(git diff --cached --name-only | grep 'dependencies.svg')" != "" ] ; then
+	git add 'doc/dependencies.svg'
+	git commit --amend -C HEAD --no-verify
+fi
