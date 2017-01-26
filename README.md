@@ -7,7 +7,7 @@ is a Yeoman generator for scaffolding PHP projects with an opinionated implement
 * [x] main
 * [x] git
 * [x] codeclimate
-* [ ] scrutiziner
+* [x] scrutiziner
 * [x] coverage
 * [ ] docs
 * [x] apidocs
