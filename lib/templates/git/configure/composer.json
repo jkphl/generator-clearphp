@@ -1,0 +1,6 @@
+{
+  "support": {
+    "source": "<%- git.https %>",
+    "issues": "<%- git.https %>/issues"
+  }
+}

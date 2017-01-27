@@ -12,6 +12,9 @@
       "role": "Developer"
     }
   ],
+  "support": {<% if(authorEmail) { %>
+    "email": "<%- authorEmail %>"<% } %>
+  },
   "repositories": {
     "graph-composer": {
       "type": "git",
