@@ -1,7 +1,7 @@
 site_name: <%- vendor %>/<%- project %>
 site_description: <%- description %>
 site_author: <%- authorName %>
-repo_url: <%- git %>
+repo_url: <%- git.https %>
 docs_dir: doc
 pages:
 - Home: 'index.md'

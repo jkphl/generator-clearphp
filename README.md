@@ -9,7 +9,7 @@ is a Yeoman generator for scaffolding PHP projects with an opinionated implement
 * [x] codeclimate
 * [x] scrutiziner
 * [x] coverage
-* [ ] docs
+* [x] docs
 * [x] apidocs
 
 ## Main generator
