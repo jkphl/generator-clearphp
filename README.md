@@ -277,16 +277,37 @@ after_script:
 
 You need to manually [add your Github repository](https://scrutinizer-ci.com/new) to your Scrutinizer account. 
 
-### Documentation
+### docs
 
-If you enable documentation support ([Read the Docs](https://readthedocs.org/) account needed), the following resources are added:
+The `cleanphp:docs` generator enables the [Read the Docs](https://readthedocs.org/) 3rd party service to render a documentation of your project resources (account needed):
+ 
+```
+yo cleanphp:docs
+```
+ 
+It adds some configuration and example documentation resources:
 
 ```
+|-- doc
+|   |-- index.md
+|   `-- todo.md
 |-- mkdocs.yml
-`-- doc
-    |-- index.md
-    `-- todo.md
 ```
+
+#### Files & directories
+
+| File                   | Description                                                                 |
+|:-----------------------|:----------------------------------------------------------------------------|
+| `index.md` / `todo.md` | Basic documentation example files                                           |
+| `mkdocs.yml`           | [MkDocs](http://www.mkdocs.org/) configuration file (used by Read the Docs) |
+
+#### Read the Docs / MkDocs configuration
+
+To render an online documentation of your project, you have to
+
+* create an account with [Read the Docs](https://readthedocs.org/),
+* [import and configure your Github respository](https://readthedocs.org/dashboard/import/) as a new project and
+* [add some pages](http://www.mkdocs.org/#adding-pages) to your documentation configuration `mkdocs.yml` (see the default configuration for a basic example).
 
 ### API documentation
 
