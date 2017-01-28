@@ -224,8 +224,6 @@ yo cleanphp:coverage
 
 #### Composer dependencies
 
-If you enable code coverage support ([Coveralls](https://coveralls.io/) account needed), the following composer development dependencies are added:
-
 * [satooshi/php-coveralls](https://github.com/satooshi/php-coveralls): PHP client for the Coveralls API
 
 
@@ -311,24 +309,53 @@ To render an online documentation of your project, you have to
 
 ### API documentation
 
-If you enable API documentation support (via phpDox), the following resources are added:
+The `cleanphp:apidocs` generator installs some tools which can automatically create a rich API documentation of your project (requires PHP 5.6+):
 
 ```
-`-- phpdox.xml.dist
+yo cleanphp:apidocs
 ```
-
-The following composer development dependencies are added:
-
-* `theseer/phpdox`
-* `phploc/phploc`
-* `phpmd/phpmd`
+ 
+It adds a single configuration resource:
 
 ```
-vendor/bin/phploc.bat --count-tests --progress --log-xml build/phploc.xml src
-vendor/bin/phpmd.bat src xml phpmd.xml --reportfile build/pmd.xml
-vendor/bin/phpunit.bat
-vendor/bin/phpdox.bat 
+|-- build
+|-- phpdox.xml.dist
 ```
+
+#### Files & directories
+
+| File              | Description                                                             |
+|:------------------|:------------------------------------------------------------------------|
+| `build`           | Directory for temporary files needed during API documentation creation. |
+| `phpdox.xml.dist` | [phpDox](http://phpdox.de/) configuration file                          |
+
+#### Composer dependencies
+
+* [theseer/phpdox](https://github.com/theseer/phpdox): Documentation generator for PHP Code
+* [phploc/phploc](https://github.com/sebastianbergmann/phploc): A tool for quickly measuring the size of a PHP project
+* [phpmd/phpmd](https://github.com/phpmd/phpmd): [PHP Mess Detector](https://phpmd.org/)
+
+#### Scripts
+
+##### API documentation
+
+The generator configures a couple of Composer scripts needed for API documentation creation: 
+
+* `phploc`: Collect project size data
+* `phpmd`: Run PHP Mess Detector on your project and prepare its analysis data
+* `phpdox`: Create the API documentation
+* `build`: Run the `phploc`, `phpmd`, `phpunit` and `phpdox` scripts in a row.
+
+While you can call the scripts individually, you will most likely want to run the `build` script to create your API documentation.
+
+```bash
+composer run build
+```
+
+Your documentation will be rendered to the directory `apidocs` (will be created if necessary). Please be aware that the API documentation creation will fail until you don't have created any PHP files in your project.
+
+To use the scripts on the Windows platform, you will have to edit the `scripts` section of your `composer.json` manually and add a `.bat` file extension to all `vendor/bin/*` scripts.
+
 
 Clean Architecture
 ------------------
