@@ -1,14 +1,14 @@
 {
-  "name": "generator-php",
+  "name": "generator-cleanphp",
   "version": "0.1.0",
-  "description": "Yeoman generator for scaffolding PHP projects with an opinionated clean architecture",
+  "description": "PHP project scaffold following clean architecture principles and featuring a variety of integrations",
   "main": "app/index.js",
   "scripts": {
     "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jkphl/generator-php.git"
+    "url": "git+https://github.com/jkphl/generator-cleanphp.git"
   },
   "keywords": [
     "yeoman-generator",
@@ -35,9 +35,9 @@
   "author": "Joschi Kuphal <joschi@kuphal.net> (https://jkphl.is)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jkphl/generator-php/issues"
+    "url": "https://github.com/jkphl/generator-cleanphp/issues"
   },
-  "homepage": "https://github.com/jkphl/generator-php#readme",
+  "homepage": "https://github.com/jkphl/generator-cleanphp#readme",
   "files": [
     "generators/apidocs",
     "generators/app",

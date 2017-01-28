@@ -1,4 +1,4 @@
-# generator-php
+# generator-cleanphp
 
 is a Yeoman generator for scaffolding PHP projects with an opinionated implementation of clean architecture.
 
