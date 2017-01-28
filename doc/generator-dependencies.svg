@@ -4,11 +4,11 @@ http://www.webgraphviz.com/
 
 digraph G {
 	node [	fontname = "Arial" ];
-	"main" -> "git"
-	"git" -> "codeclimate"
-	"git" -> "coverage"
-	"git" -> "scrutinizer"
-	"git" -> "docs"
+	"main" -> "github"
+	"github" -> "codeclimate"
+	"github" -> "coverage"
+	"github" -> "scrutinizer"
+	"github" -> "docs"
 	"main" -> "apidocs"
 }
 
@@ -18,28 +18,28 @@ digraph G {
         <path fill="#fff" stroke="#fff" d="M-4 5v-189h461V5H-4z"/>
         <g class="node">
             <title>main</title>
-            <ellipse fill="none" stroke="#000" cx="299" cy="-162" rx="31.4395" ry="18"/>
-            <text text-anchor="middle" x="299" y="-157.8" font-family="Arial" font-size="14.00">main</text>
+            <ellipse fill="none" stroke="#000" cx="305" cy="-162" rx="31.4395" ry="18"/>
+            <text text-anchor="middle" x="305" y="-157.8" font-family="Arial" font-size="14.00">main</text>
         </g>
         <g class="node">
-            <title>git</title>
-            <ellipse fill="none" stroke="#000" cx="255" cy="-90" rx="27" ry="18"/>
-            <text text-anchor="middle" x="255" y="-85.8" font-family="Arial" font-size="14.00">git</text>
+            <title>github</title>
+            <ellipse fill="none" stroke="#000" cx="255" cy="-90" rx="37.0058" ry="18"/>
+            <text text-anchor="middle" x="255" y="-85.8" font-family="Arial" font-size="14.00">github</text>
         </g>
         <g class="edge">
-            <title>main-&gt;git</title>
-            <path fill="none" stroke="#000" d="M288.795-144.765L270.652-115.9"/>
-            <path stroke="#000" d="M273.435-113.75l-8.285 6.603 2.358-10.33 5.927 3.726z"/>
+            <title>main-&gt;github</title>
+            <path fill="none" stroke="#000" d="M293.654-145.116c-6.24 8.736-14.116 19.763-21.13 29.58"/>
+            <path stroke="#000" d="M275.308-113.41l-8.66 6.103 2.964-10.172 5.696 4.07z"/>
         </g>
         <g class="node">
             <title>apidocs</title>
-            <ellipse fill="none" stroke="#000" cx="344" cy="-90" rx="43.9657" ry="18"/>
-            <text text-anchor="middle" x="344" y="-85.8" font-family="Arial" font-size="14.00">apidocs</text>
+            <ellipse fill="none" stroke="#000" cx="355" cy="-90" rx="43.9657" ry="18"/>
+            <text text-anchor="middle" x="355" y="-85.8" font-family="Arial" font-size="14.00">apidocs</text>
         </g>
         <g class="edge">
             <title>main-&gt;apidocs</title>
-            <path fill="none" stroke="#000" d="M309.437-144.765l18.29 28.453"/>
-            <path stroke="#000" d="M330.844-117.938l2.463 10.305-8.352-6.52 5.89-3.785z"/>
+            <path fill="none" stroke="#000" d="M316.346-145.116l20.828 29.16"/>
+            <path stroke="#000" d="M340.038-117.97l2.964 10.173-8.66-6.103 5.696-4.07z"/>
         </g>
         <g class="node">
             <title>codeclimate</title>
@@ -47,9 +47,9 @@ digraph G {
             <text text-anchor="middle" x="62" y="-13.8" font-family="Arial" font-size="14.00">codeclimate</text>
         </g>
         <g class="edge">
-            <title>git-&gt;codeclimate</title>
-            <path fill="none" stroke="#000" d="M231.72-80.556l-122.912 44.58"/>
-            <path stroke="#000" d="M109.857-32.634l-10.595.12 8.208-6.7 2.387 6.58z"/>
+            <title>github-&gt;codeclimate</title>
+            <path fill="none" stroke="#000" d="M226.106-78.52L108.854-35.994"/>
+            <path stroke="#000" d="M109.975-32.677l-10.594.12 8.21-6.7 2.386 6.58z"/>
         </g>
         <g class="node">
             <title>coverage</title>
@@ -57,9 +57,9 @@ digraph G {
             <text text-anchor="middle" x="193" y="-13.8" font-family="Arial" font-size="14.00">coverage</text>
         </g>
         <g class="edge">
-            <title>git-&gt;coverage</title>
-            <path fill="none" stroke="#000" d="M241.85-74.155c-8.043 9.083-18.52 20.912-27.708 31.285"/>
-            <path stroke="#000" d="M216.68-40.456l-9.25 5.165 4.01-9.808 5.24 4.64z"/>
+            <title>github-&gt;coverage</title>
+            <path fill="none" stroke="#000" d="M240.93-73.116l-26.725 30.174"/>
+            <path stroke="#000" d="M216.694-40.472l-9.25 5.165 4.01-9.807 5.24 4.642z"/>
         </g>
         <g class="node">
             <title>scrutinizer</title>
@@ -67,9 +67,9 @@ digraph G {
             <text text-anchor="middle" x="317" y="-13.8" font-family="Arial" font-size="14.00">scrutinizer</text>
         </g>
         <g class="edge">
-            <title>git-&gt;scrutinizer</title>
-            <path fill="none" stroke="#000" d="M268.15-74.155c7.93 8.955 18.226 20.58 27.32 30.846"/>
-            <path stroke="#000" d="M298.12-45.596l4.01 9.807-9.25-5.163 5.24-4.642z"/>
+            <title>github-&gt;scrutinizer</title>
+            <path fill="none" stroke="#000" d="M269.07-73.116l26.346 29.746"/>
+            <path stroke="#000" d="M298.112-45.604l4.01 9.807-9.25-5.166 5.24-4.64z"/>
         </g>
         <g class="node">
             <title>docs</title>
@@ -77,10 +77,9 @@ digraph G {
             <text text-anchor="middle" x="421" y="-13.8" font-family="Arial" font-size="14.00">docs</text>
         </g>
         <g class="edge">
-            <title>git-&gt;docs</title>
-            <path fill="none" stroke="#000"
-                  d="M276.223-78.717c4.832 2.27 9.96 4.62 14.777 6.717 39.496 17.206 50.173 19.574 90 36 2.04.842 4.137 1.713 6.25 2.596"/>
-            <path stroke="#000" d="M388.637-36.617l7.86 7.105-10.575-.654 2.715-6.45z"/>
+            <title>github-&gt;docs</title>
+            <path fill="none" stroke="#000" d="M282.54-77.45C308.077-66.733 347.12-50.325 381-36l6.232 2.638"/>
+            <path stroke="#000" d="M388.63-36.57l7.838 7.127-10.573-.684 2.734-6.444z"/>
         </g>
     </g>
 </svg>

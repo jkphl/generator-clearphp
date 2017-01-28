@@ -9,7 +9,7 @@ module.exports = class extends PhpGenerator {
      * @param {Object} options Options
      */
     constructor(args, options) {
-        super(args, Object.assign(options, { run: 'git' }));
+        super(args, Object.assign(options, { run: 'github' }));
     }
 
     /**

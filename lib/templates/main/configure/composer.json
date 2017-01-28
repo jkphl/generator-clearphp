@@ -33,6 +33,8 @@
     }
   }<% } %>,
   "scripts": {
-    "depgraph": "vendor/clue/graph-composer/bin/graph-composer --no-dev export . doc/dependencies.svg"
+    "phpunit": "vendor/bin/phpunit --configuration phpunit.xml.dist",
+    "depgraph": "vendor/clue/graph-composer/bin/graph-composer --no-dev export . doc/dependencies.svg",
+    "test": "@phpunit"
   }
 }

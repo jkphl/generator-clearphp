@@ -26,7 +26,7 @@ The generator consists of several subgenerators:
  
 * [cleanphp](#app) (aka [cleanphp:app](#app))
 * [cleanphp:main](#main)
-* [cleanphp:git](#git)
+* [cleanphp:github](#github)
 * [cleanphp:codeclimate](#codeclimate)
 * [cleanphp:coverage](#coverage)
 * [cleanphp:scrutinizer](#scrutinizer)
@@ -39,7 +39,7 @@ The subgenerators partly depend on each other:
 
 Each subgenerator will only run once and automatically pull in the other generators it depends on. You can run them individually at any time, using them as supplementary add-ons to your project. 
 
-### App
+### app
 
 The `cleanphp:app` subgenerator is basically a meta generator calling all of the other subgenerators.
 
@@ -47,7 +47,7 @@ The `cleanphp:app` subgenerator is basically a meta generator calling all of the
 yo cleanphp
 ```
 
-### Main
+### main
 
 The `cleanphp:main` generator creates the base project structure and setup. During installation, you will be asked a couple of questions like the vendor and project name, the minimum PHP version and some information about the project author. Running
 
@@ -102,56 +102,78 @@ will scaffold these files and directories for you:
 
 #### Scripts
 
-The initial setup will configure a Composer script you can use for creating a SVG dependency graph of your project.
+##### Unit tests
+
+You can run your [PHPUnit](https://github.com/sebastianbergmann/phpunit) unit tests by calling the Composer scripts
+
+```
+composer run phpunit
+```
+
+or
+
+```
+composer run test
+```
+
+##### Dependency graph
+
+You can create a dependency graph of your project by running
   
 ```
 composer run depgraph
 ```
 
-This will create a graph like this:
+This will create an SVG file like this:
 
 ![PHP project dependency graph (example)](https://rawgit.com/jkphl/generator-cleanphp/master/doc/dependency-graph.svg)
 
-stored here:
+stored in the `doc` directory:
 
 ```bash
 |-- doc
 |   `-- dependencies.svg
 ```
 
-By default, the dependency graph is embedded into the `README.md`. However, unless you run the [cleanphp:git](#git) subgenerator you'll have to create and update the graph manually each time you change the Composer dependencies of your project. 
+By default, the dependency graph is embedded into the `README.md`. Unless you run the [cleanphp:github](#github) subgenerator you'll have to create and update the graph manually each time you change the Composer dependencies of your project. 
 
-### Composer setup
+### github
 
-The default composer dependencies are:
-
-* `php`
-
-The default composer development dependencies are:
-
-* `clue/graph-composer`
-
-### Unit tests
-
-If you enable Unit tests, the following resources are added:
+The `cleanphp:github` subgenerator is an essential requirement for most other subgenerators and will connect your project to a Github repository.
 
 ```
-|-- phpunit.php
-|-- phpunit.xml.dist
-`-- src
-  `-- <Project name>
-      `-- Tests
+yo cleanphp:github
 ```
 
-The following composer development dependencies are added:
+The generator initializes a Git repository and adds some files:
 
-* `phpunit/phpunit`
+```bash
+|-- .git
+|   `-- hooks
+|       |-- post-commit
+|       `-- pre-commit
+|-- .gitattributes
+|-- .gitignore
+|-- .travis.yml
+```
 
-## Subgenerators
+Please be aware that **the generator doesn't create a repository on Github** for you — you'll have to do that manually prior to running the generator. The generator will ask you for the Github repository URL. You can provide either the SSH or the HTTPS repository URL here.
 
-### Code Climate
+#### Files & directories
 
-If you enable [code climate](https://codeclimate.com) support (account needed), the following resources are added:
+| File                         | Description                                                                                                                                                                                            |
+|:-----------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `.git`                       | The Git repository of your project                                                                                                                                                                     |
+| `post-commit` / `pre-commit` | Git hooks that automatically recreates the [dependency graph](#dependency-graph) of your project whenever you commit an altered `composer.json` file.                                                  |
+| `.gitattributes`             | Configuration file [assigning attributes to files](https://git-scm.com/docs/gitattributes).                                                                                                            |
+| `.gitignore`                 | Specification which [files (not) to track](https://git-scm.com/docs/gitignore).                                                                                                                        |
+| `.travis.yml`                | Configuration file for the [Travis CI Service](https://travis-ci.org/). For Travis to build your project on every commit, you have to manually activate the project repository in your Travis profile. |
+
+
+
+### codeclimate
+
+This generator integrates the [Code climate](https://codeclimate.com) support (account needed), the following resources are added:
 
 ```
 |-- .codeclimate.yml

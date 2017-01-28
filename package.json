@@ -44,7 +44,7 @@
     "generators/codeclimate",
     "generators/coverage",
     "generators/docs",
-    "generators/git",
+    "generators/github",
     "generators/main",
     "generators/scrutinizer",
     "lib"
