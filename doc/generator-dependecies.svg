@@ -1,0 +1,86 @@
+<!--
+
+http://www.webgraphviz.com/
+
+digraph G {
+	node [	fontname = "Arial" ];
+	"main" -> "git"
+	"git" -> "codeclimate"
+	"git" -> "coverage"
+	"git" -> "scrutinizer"
+	"git" -> "docs"
+	"main" -> "apidocs"
+}
+
+--><svg viewBox="0 0 460 188" xmlns="http://www.w3.org/2000/svg">
+    <g class="graph" transform="translate(4 184)">
+        <title>G</title>
+        <path fill="#fff" stroke="#fff" d="M-4 5v-189h461V5H-4z"/>
+        <g class="node">
+            <title>main</title>
+            <ellipse fill="none" stroke="#000" cx="299" cy="-162" rx="31.4395" ry="18"/>
+            <text text-anchor="middle" x="299" y="-157.8" font-family="Arial" font-size="14.00">main</text>
+        </g>
+        <g class="node">
+            <title>git</title>
+            <ellipse fill="none" stroke="#000" cx="255" cy="-90" rx="27" ry="18"/>
+            <text text-anchor="middle" x="255" y="-85.8" font-family="Arial" font-size="14.00">git</text>
+        </g>
+        <g class="edge">
+            <title>main-&gt;git</title>
+            <path fill="none" stroke="#000" d="M288.795-144.765L270.652-115.9"/>
+            <path stroke="#000" d="M273.435-113.75l-8.285 6.603 2.358-10.33 5.927 3.726z"/>
+        </g>
+        <g class="node">
+            <title>apidocs</title>
+            <ellipse fill="none" stroke="#000" cx="344" cy="-90" rx="43.9657" ry="18"/>
+            <text text-anchor="middle" x="344" y="-85.8" font-family="Arial" font-size="14.00">apidocs</text>
+        </g>
+        <g class="edge">
+            <title>main-&gt;apidocs</title>
+            <path fill="none" stroke="#000" d="M309.437-144.765l18.29 28.453"/>
+            <path stroke="#000" d="M330.844-117.938l2.463 10.305-8.352-6.52 5.89-3.785z"/>
+        </g>
+        <g class="node">
+            <title>codeclimate</title>
+            <ellipse fill="none" stroke="#000" cx="62" cy="-18" rx="62.3213" ry="18"/>
+            <text text-anchor="middle" x="62" y="-13.8" font-family="Arial" font-size="14.00">codeclimate</text>
+        </g>
+        <g class="edge">
+            <title>git-&gt;codeclimate</title>
+            <path fill="none" stroke="#000" d="M231.72-80.556l-122.912 44.58"/>
+            <path stroke="#000" d="M109.857-32.634l-10.595.12 8.208-6.7 2.387 6.58z"/>
+        </g>
+        <g class="node">
+            <title>coverage</title>
+            <ellipse fill="none" stroke="#000" cx="193" cy="-18" rx="50.624" ry="18"/>
+            <text text-anchor="middle" x="193" y="-13.8" font-family="Arial" font-size="14.00">coverage</text>
+        </g>
+        <g class="edge">
+            <title>git-&gt;coverage</title>
+            <path fill="none" stroke="#000" d="M241.85-74.155c-8.043 9.083-18.52 20.912-27.708 31.285"/>
+            <path stroke="#000" d="M216.68-40.456l-9.25 5.165 4.01-9.808 5.24 4.64z"/>
+        </g>
+        <g class="node">
+            <title>scrutinizer</title>
+            <ellipse fill="none" stroke="#000" cx="317" cy="-18" rx="55.0387" ry="18"/>
+            <text text-anchor="middle" x="317" y="-13.8" font-family="Arial" font-size="14.00">scrutinizer</text>
+        </g>
+        <g class="edge">
+            <title>git-&gt;scrutinizer</title>
+            <path fill="none" stroke="#000" d="M268.15-74.155c7.93 8.955 18.226 20.58 27.32 30.846"/>
+            <path stroke="#000" d="M298.12-45.596l4.01 9.807-9.25-5.163 5.24-4.642z"/>
+        </g>
+        <g class="node">
+            <title>docs</title>
+            <ellipse fill="none" stroke="#000" cx="421" cy="-18" rx="31.1457" ry="18"/>
+            <text text-anchor="middle" x="421" y="-13.8" font-family="Arial" font-size="14.00">docs</text>
+        </g>
+        <g class="edge">
+            <title>git-&gt;docs</title>
+            <path fill="none" stroke="#000"
+                  d="M276.223-78.717c4.832 2.27 9.96 4.62 14.777 6.717 39.496 17.206 50.173 19.574 90 36 2.04.842 4.137 1.713 6.25 2.596"/>
+            <path stroke="#000" d="M388.637-36.617l7.86 7.105-10.575-.654 2.715-6.45z"/>
+        </g>
+    </g>
+</svg>

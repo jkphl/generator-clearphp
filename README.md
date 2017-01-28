@@ -1,18 +1,47 @@
 # generator-cleanphp
 
-is a Yeoman generator for scaffolding PHP projects with an opinionated implementation of clean architecture.
+[![NPM version][npm-image]][npm-url] [![NPM downloads][npm-downloads]][npm-url] [![Dependency Status][depstat-image]][depstat-url] [![Development Dependency Status][devdepstat-image]][devdepstat-url]
 
-## To-Do
+is a Yeoman generator for scaffolding PHP projects following a custom implementation of clean architecture principles. During scaffolding, you can select from a variety of 3rd party tools and service intergrations.
 
-* [x] main
-* [x] git
-* [x] codeclimate
-* [x] scrutiziner
-* [x] coverage
-* [x] docs
-* [x] apidocs
+## Usage
 
-## Main generator
+To **install the PHP project generator** and its dependencies, please run:
+
+```
+npm install -g yo generator-cleanphp
+```
+
+To **scaffold a new PHP project**, create a new directory, `cd` into it and run the generator:
+  
+```
+mkdir vendorname-project
+cd vendorname-project
+yo cleanphp
+```
+
+## Generators
+
+The generator consists of several subgenerators:
+ 
+* [cleanphp](#app) (aka [cleanphp:app](#app))
+* [cleanphp:main](#main)
+* [cleanphp:git](#git)
+* [cleanphp:codeclimate](#codeclimate)
+* [cleanphp:coverage](#coverage)
+* [cleanphp:scrutinizer](#scrutinizer)
+* [cleanphp:docs](#docs)
+* [cleanphp:apidocs](#apidocs)
+
+The subgenerators partly depend on each other:
+
+![Subgenerator dependencies](https://rawgit.com/jkphl/generator-cleanphp/master/doc/generator-dependencies.svg)
+
+Each subgenerator will only run once and automatically pull in the other generators it depends on. You can run them individually at any time, using them as supplementary add-ons to your project. 
+
+### App
+
+### Main
 
 The main generator creates the base project structure and setup:
 
@@ -151,3 +180,28 @@ vendor/bin/phpmd.bat src xml phpmd.xml --reportfile build/pmd.xml
 vendor/bin/phpunit.bat
 vendor/bin/phpdox.bat 
 ```
+
+Known problems / To-do
+----------------------
+
+Currently there are no known problems.
+
+
+Changelog
+---------
+
+Please refer to the [changelog](CHANGELOG.md) for a complete release history.
+
+
+Legal
+-----
+Copyright © 2017 Joschi Kuphal <joschi@kuphal.net> / [@jkphl](https://twitter.com/jkphl). *generator-cleanphp* is licensed under the terms of the [MIT license](LICENSE.txt).
+
+
+[npm-url]: https://npmjs.org/package/generator-cleanphp
+[npm-image]: https://badge.fury.io/js/generator-cleanphp.svg
+[npm-downloads]: https://img.shields.io/npm/dm/generator-cleanphp.svg
+[depstat-url]: https://david-dm.org/jkphl/generator-cleanphp#info=dependencies
+[depstat-image]: https://david-dm.org/jkphl/generator-cleanphp.svg
+[devdepstat-url]: https://david-dm.org/jkphl/generator-cleanphp#info=devDependencies
+[devdepstat-image]: https://david-dm.org/jkphl/generator-cleanphp/dev-status.svg
