@@ -46,7 +46,7 @@ Each subgenerator will only run once and automatically pull in the other generat
 
 ### app
 
-The `cleanphp:app` subgenerator is basically a meta generator calling all of the other subgenerators.
+The `cleanphp:app` subgenerator is basically a meta generator pulling in all of the other subgenerators.
 
 ```bash
 yo cleanphp
@@ -55,7 +55,7 @@ yo cleanphp
 
 ### main
 
-The `cleanphp:main` generator creates the base project structure and setup. During installation, you will be asked a couple of questions like the vendor and project name, the minimum PHP version and some information about the project author. Running
+The `cleanphp:main` generator creates the basic project structure and setup. During installation, you will be asked a couple of questions like the vendor and project name, the minimum PHP version and some information about the project author.
 
 ```bash
 yo cleanphp:main
@@ -76,7 +76,7 @@ will scaffold these files and directories for you:
 |-- phpunit.php
 |-- phpunit.xml.dist
 `-- src
-    `-- <Project name> 
+    `-- <Project> 
         |-- Application
         |-- Domain
         |-- Infrastructure
@@ -88,32 +88,32 @@ will scaffold these files and directories for you:
 
 #### Files & directories
 
-| File               | Description                                                                                                                                                                                                                                   |
-|:-------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `.editorconfig`    | [Editorconfig](http://editorconfig.org) definitions file                                                                                                                                                                                      |
-| `.yo-rc.json`      | Yeoman's configuration file where your answers are stored between generator runs. Don't edit this file by hand. However, if you're sure you'll never run any of the generators again, you can safely delete this file.                        |
-| `CHANGELOG.md`     | Changelog of your project. Try to stick to [Keep a CHANGELOG](http://keepachangelog.com/) principles when adding entries.                                                                                                                     |
-| `CONDUCT.md`       | Contributor Code of Conduct, adapted from the [Contributor covenant](http://contributor-covenant.org/version/1/4/) version 1.4.                                                                                                               |
-| `LICENCE`          | The license you selected during installation.                                                                                                                                                                                                 |
-| `README.md`        | The main README file of your project. Be aware that it might be amended and overwritten when you run additional subgenerators at a later time. However, you'll always have the chance to review the differences (if any) and skip the update. |
-| `composer.json`    | The [Composer](https://getcomposer.org/) configuration of your project.                                                                                                                                                                       |
-| `doc`              | This is the directory where your project documentation should reside. You can add some basic files with the [cleanphp:docs](#docs) generator.                                                                                                 |
-| `phpunit.php`      | Bootstrap file for [PHPUnit](https://github.com/sebastianbergmann/phpunit) including the Composer autoloader.                                                                                                                                 |
-| `phpunit.xml.dist` | [PHPUnit](https://github.com/sebastianbergmann/phpunit) configuration                                                                                                                                                                         |
-| `src`              | Base directory for your PHP project files. [See below](#clean-architecture) for some words on the clean architecture principles proposed by the generator.                                                                                    |
+| File               | Description                                                                                                                                                                                                                                  |
+|:-------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `.editorconfig`    | [Editorconfig](http://editorconfig.org) definitions file                                                                                                                                                                                     |
+| `.yo-rc.json`      | Yeoman's configuration file where your answers are stored between generator runs. Don't edit this file manually. However, if you're sure you'll never run any of the generators again, you can safely delete this file.                      |
+| `CHANGELOG.md`     | Changelog of your project. Try to stick to [Keep a CHANGELOG](http://keepachangelog.com/) principles when adding entries.                                                                                                                    |
+| `CONDUCT.md`       | Contributor Code of Conduct, adapted from the [Contributor covenant](http://contributor-covenant.org/version/1/4/) version 1.4.                                                                                                              |
+| `LICENCE`          | The license you selected during installation.                                                                                                                                                                                                |
+| `README.md`        | The main README file of your project. Be aware that it might be amended and overwritten when you run additional subgenerators at a later time. However, you'll always have the chance to review the differences (if any) and skip an update. |
+| `composer.json`    | The [Composer](https://getcomposer.org/) configuration of your project.                                                                                                                                                                      |
+| `doc`              | This is the directory where your project documentation should reside. You can add some basic files with the [cleanphp:docs](#docs) generator.                                                                                                |
+| `phpunit.php`      | Bootstrap file for [PHPUnit](https://github.com/sebastianbergmann/phpunit) including the Composer autoloader.                                                                                                                                |
+| `phpunit.xml.dist` | [PHPUnit](https://github.com/sebastianbergmann/phpunit) configuration                                                                                                                                                                        |
+| `src`              | Base directory for your PHP project source files. [See below](#clean-architecture) for some words on the clean architecture principles propagated by the generator.                                                                          |
 
 
 #### Composer dependencies
 
 * [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit): Unit testing framework
-* [clue/graph-composer](https://github.com/jkphl/graph-composer): Library for creating dependency graphs of your project
+* [clue/graph-composer](https://github.com/jkphl/graph-composer): Library for creating a dependency graph of your project
 
 
 #### Scripts
 
 ##### Unit tests
 
-You can run your [PHPUnit](https://github.com/sebastianbergmann/phpunit) unit tests by calling the Composer scripts
+You can run your [PHPUnit](https://github.com/sebastianbergmann/phpunit) unit tests by calling the Composer script
 
 ```bash
 composer run phpunit
@@ -145,18 +145,18 @@ stored in the `doc` directory:
 |   `-- dependencies.svg
 ```
 
-By default, the dependency graph is embedded into the `README.md`. Unless you run the [cleanphp:github](#github) subgenerator you'll have to create and update the graph manually each time you change the Composer dependencies of your project. 
+By default, the dependency graph is embedded into the `README.md`. Unless you run the [cleanphp:github](#github) subgenerator, you'll have to create and update the graph manually each time you change the Composer dependencies of your project. 
 
 
 ### github
 
-The `cleanphp:github` subgenerator is an essential requirement for most other subgenerators and will connect your project to a Github repository.
+The `cleanphp:github` subgenerator is an essential requirement for most of the other subgenerators and will connect your project to a Github repository.
 
 ```bash
 yo cleanphp:github
 ```
 
-The generator initializes a Git repository and adds some files:
+The generator initializes a local Git repository and adds some files:
 
 ```
 |-- .git
@@ -168,7 +168,7 @@ The generator initializes a Git repository and adds some files:
 |-- .travis.yml
 ```
 
-Please be aware that **the generator doesn't create a repository on Github** for you — you'll have to do that manually prior to running the generator. The generator will ask you for the Github repository URL. You can provide either the SSH or the HTTPS repository URL here.
+Please be aware that **the generator doesn't create a remote repository on Github**. You'll have to do that manually prior to running the generator. The generator will ask you for the Github repository URL. You can provide either the SSH or the HTTPS repository URL here.
 
 
 #### Files & directories
@@ -176,10 +176,10 @@ Please be aware that **the generator doesn't create a repository on Github** for
 | File                         | Description                                                                                                                                                                                            |
 |:-----------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `.git`                       | The Git repository of your project                                                                                                                                                                     |
-| `post-commit` / `pre-commit` | Git hooks that automatically recreates the [dependency graph](#dependency-graph) of your project whenever you commit an altered `composer.json` file.                                                  |
-| `.gitattributes`             | Configuration file [assigning attributes to files](https://git-scm.com/docs/gitattributes).                                                                                                            |
+| `post-commit` / `pre-commit` | Git hooks that automatically recreate the [dependency graph](#dependency-graph) of your project whenever you commit an altered `composer.json` file.                                                   |
+| `.gitattributes`             | Configuration file [assigning attributes to paths](https://git-scm.com/docs/gitattributes).                                                                                                            |
 | `.gitignore`                 | Specification which [files (not) to track](https://git-scm.com/docs/gitignore).                                                                                                                        |
-| `.travis.yml`                | Configuration file for the [Travis CI Service](https://travis-ci.org/). For Travis to build your project on every commit, you have to manually activate the project repository in your Travis profile. |
+| `.travis.yml`                | Configuration file for the [Travis CI Service](https://travis-ci.org/). For Travis to build your project on every commit, you have to manually activate the project repository [in your Travis profile](https://travis-ci.org/profile/). |
 
 
 ### codeclimate
@@ -200,10 +200,10 @@ It adds some configuration resources:
 
 #### Files & directories
 
-| File               | Description                                                                           |
-|:-------------------|:--------------------------------------------------------------------------------------|
-| `.codeclimate.yml` | [Code Climate](https://codeclimate.com) configuration file                            |
-| `phpmd.xml`        | [PHP Mess Detector](https://phpmd.org/) configuration file (consumed by Code Climate) |
+| File               | Description                                                                       |
+|:-------------------|:----------------------------------------------------------------------------------|
+| `.codeclimate.yml` | [Code Climate](https://codeclimate.com) configuration file                        |
+| `phpmd.xml`        | [PHP Mess Detector](https://phpmd.org/) configuration file (used by Code Climate) |
 
 
 #### Composer dependencies
@@ -225,9 +225,9 @@ addons:
 
 Please obtain this token prior to running the generator by
 
-* adding your Github repository as a project to your Code Climate profile,
-* go to `Settings > Test Coverage`,
-* scroll down, display the Travis CI options and copy the 64-character `repo_token`.
+* [adding your Github repository](https://codeclimate.com/github/signup) as a project to your Code Climate profile,
+* going to `Settings > Test Coverage`,
+* scrolling down, displaying the Travis CI options and copying the 64-character `repo_token` from there.
 
 
 ### coverage
@@ -299,7 +299,7 @@ You need to manually [add your Github repository](https://scrutinizer-ci.com/new
 
 ### docs
 
-The `cleanphp:docs` generator enables the [Read the Docs](https://readthedocs.org/) 3rd party service to render a documentation of your project resources (account needed):
+The `cleanphp:docs` generator enables the [Read the Docs](https://readthedocs.org/) 3rd party service to render an online documentation of your project resources (account needed):
  
 ```bash
 yo cleanphp:docs
@@ -329,10 +329,10 @@ To render an online documentation of your project, you have to
 
 * create an account with [Read the Docs](https://readthedocs.org/),
 * [import and configure your Github respository](https://readthedocs.org/dashboard/import/) as a new project and
-* [add some pages](http://www.mkdocs.org/#adding-pages) to your documentation configuration `mkdocs.yml` (see the default configuration for a basic example).
+* [add some pages](http://www.mkdocs.org/#adding-pages) to your documentation configuration `mkdocs.yml` (see the default file for a basic example).
 
 
-### API documentation
+### apidocs
 
 The `cleanphp:apidocs` generator installs some tools which can automatically create a rich API documentation of your project (requires PHP 5.6+):
 
@@ -340,7 +340,7 @@ The `cleanphp:apidocs` generator installs some tools which can automatically cre
 yo cleanphp:apidocs
 ```
  
-It adds a single configuration resource:
+It adds some configuration resources:
 
 ```
 |-- build
@@ -352,7 +352,7 @@ It adds a single configuration resource:
 
 | File              | Description                                                             |
 |:------------------|:------------------------------------------------------------------------|
-| `build`           | Directory for temporary files needed during API documentation creation. |
+| `build`           | Directory for temporary files needed during API documentation creation |
 | `phpdox.xml.dist` | [phpDox](http://phpdox.de/) configuration file                          |
 
 
@@ -365,24 +365,24 @@ It adds a single configuration resource:
 
 #### Scripts
 
-##### apidocs
+##### API documentation
 
-The generator configures a couple of Composer scripts needed for API documentation creation: 
+The generator configures a couple of Composer scripts for API documentation creation: 
 
 * `phploc`: Collect project size data
-* `phpmd`: Run PHP Mess Detector on your project and prepare its analysis data
+* `phpmd`: Run PHP Mess Detector on your project
 * `phpdox`: Create the API documentation
-* `build`: Run the `phploc`, `phpmd`, `phpunit` and `phpdox` scripts in a row.
+* `build`: Run the `phploc`, `phpmd`, `phpunit` and `phpdox` scripts in a row (complete API documentation creation)
 
-While you can call the scripts individually, you will most likely want to run the `build` script to create your API documentation.
+While you can call the scripts individually, you will most likely want to run the `build` script to create your API documentation:
 
 ```bash
 composer run build
 ```
 
-Your documentation will be rendered to the directory `apidocs` (will be created if necessary). Please be aware that the API documentation creation will fail until you don't have created any PHP files in your project.
+Your documentation will be rendered into the `apidocs` directory (created if necessary). Please be aware that the creation will fail as long as you don't have any PHP files in your project.
 
-To use the scripts on the Windows platform, you will have to edit the `scripts` section of your `composer.json` manually and add a `.bat` file extension to all `vendor/bin/*` scripts.
+To use the scripts on Windows, you can edit the `scripts` section of your `composer.json` manually and add a `.bat` file extension to all the `vendor/bin/*` binary calls.
 
 
 Clean Architecture
