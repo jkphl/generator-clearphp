@@ -214,7 +214,36 @@ Please obtain this token prior to running the generator by
 * go to `Settings > Test Coverage`,
 * scroll down, display the Travis CI options and copy the 64-character `repo_token`.
 
-### Scrutinizer
+### coverage
+
+The `cleanphp:coverage` generator integrates the [Coveralls](https://coveralls.io/) 3rd party service (account needed):
+ 
+```
+yo cleanphp:coverage
+```
+
+#### Composer dependencies
+
+If you enable code coverage support ([Coveralls](https://coveralls.io/) account needed), the following composer development dependencies are added:
+
+* [satooshi/php-coveralls](https://github.com/satooshi/php-coveralls): PHP client for the Coveralls API
+
+
+#### Travis configuration
+
+The generator adds an `after_script` entry to your Travis CI configuration file, used for submitting code coverage data to Coveralls:
+
+```
+after_script:
+  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v; fi;'
+```
+
+#### Coveralls configuration
+
+You need to manually [activate the Github repository](https://coveralls.io/repos/new) in your Coveralls account settings.
+
+
+### scrutinizer
 
 The `cleanphp:scrutinizer` generator integrates the [Scrutinizer](https://scrutinizer-ci.com/) 3rd party service (account needed)
 
@@ -244,18 +273,9 @@ after_script:
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml; fi;'
 ```
  
-### Code coverage
+#### Scrutinizer configuration
 
-If you enable code coverage support ([Coveralls](https://coveralls.io/) account needed), the following composer development dependencies are added:
-
-* `satooshi/php-coveralls`
-
-Code coverage data submission to Coveralls is added to the Travis CI configuration (`.travis.yml`):
-
-```
-after_script:
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v; fi;'
-```
+You need to manually [add your Github repository](https://scrutinizer-ci.com/new) to your Scrutinizer account. 
 
 ### Documentation
 
