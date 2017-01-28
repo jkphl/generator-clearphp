@@ -15,6 +15,9 @@
   "support": {<% if(authorEmail) { %>
     "email": "<%- authorEmail %>"<% } %>
   },
+  "config": {
+    "sort-packages": true
+  },
   "repositories": {
     "graph-composer": {
       "type": "git",
