@@ -6,7 +6,7 @@
 
 ## Documentation
 
-Please find the [project documentation](doc/index.md) in the `doc` directory.<% if(docs) { %> I recommend [reading it](http://<%- vendor %>-<%- project %>.readthedocs.io/) via *Read the Docs*.<% } %>
+Please find the [project documentation](doc/index.md) in the `doc` directory.<% if(docs) { %> We recommend [reading it](http://<%- vendor %>-<%- project %>.readthedocs.io/) via *Read the Docs*.<% } %>
 
 ## Installation
 
@@ -22,9 +22,23 @@ To run the unit tests at the command line, issue `composer install` and then `ph
 
 This library attempts to comply with [PSR-1][], [PSR-2][], and [PSR-4][]. If you notice compliance oversights, please send a patch via pull request.
 
-[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
-[PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
-[PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
+<% if(github) { %>## Contributing
+
+Found a bug or have a feature request? [Please have a look at the known issues](<%- github.https %>/issues) first and open a new issue if necessary. Please see [contributing](CONTRIBUTING.md) and [conduct](CONDUCT.md) for details.
+
+<% } %>## Security
+
+If you discover any security related issues, please email <%- authorEmail %> instead of using the issue tracker.
+
+## Credits
+
+- [<%- authorName%>][author-url]
+- [All Contributors](../../contributors)
+
+## License
+
+Copyright © <%- year %> [<%- authorName%>][author-url] / <%- authorEmail %>. Licensed under the terms of the [<%- license %> license](LICENSE.md).
+
 
 <% if(github) { %>[travis-image]: https://secure.travis-ci.org/<%- vendor %>/<%- project %>.svg
 [travis-url]: https://travis-ci.org/<%- vendor %>/<%- project %>
@@ -36,3 +50,7 @@ This library attempts to comply with [PSR-1][], [PSR-2][], and [PSR-4][]. If you
 [codeclimate-url]: https://scrutinizer-ci.com/g/<%- vendor %>/<%- project %>/?branch=master
 <% } %><% if(docs) { %>[readthedocs-image]: https://readthedocs.org/projects/<%- vendor %>-<%- project %>/badge/?version=latest
 [readthedocs-url]: http://<%- vendor %>-<%- project %>.readthedocs.io/en/latest/?badge=latest<% } %>
+[author-url]: <%- authorWebsite %>
+[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
+[PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
+[PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md

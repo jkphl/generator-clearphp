@@ -6,9 +6,9 @@
   "license": "<%- license %>",
   "authors": [
     {
-      "name": "<%- authorName %>",<% if(authorEmail) { %>
-      "email": "<%- authorEmail %>",<% } if(authorWebsite) { %>
-      "homepage": "<%- authorWebsite %>",<% } %>
+      "name": "<%- authorName %>",
+      "email": "<%- authorEmail %>",
+      "homepage": "<%- authorWebsite %>",
       "role": "Developer"
     }
   ],
