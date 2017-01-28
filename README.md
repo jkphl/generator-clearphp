@@ -382,11 +382,12 @@ composer run build
 
 Your documentation will be rendered into the `apidocs` directory (created if necessary). Please be aware that the creation will fail as long as you don't have any PHP files in your project.
 
-To use the scripts on Windows, you can edit the `scripts` section of your `composer.json` manually and add a `.bat` file extension to all the `vendor/bin/*` binary calls.
+To use the scripts on Windows, edit the `scripts` section of your `composer.json` manually and add a `.bat` file extension to all the `vendor/bin/*` binary calls.
 
 
 Clean Architecture
 ------------------
+Please see the [recommended architecture principles](doc/CLEAN-ARCHITECTURE-PRINCIPLES.md) for an inspiration on how to structure your PHP application.
 
 
 Known problems / To-do
