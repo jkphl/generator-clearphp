@@ -1,6 +1,6 @@
 # <%- vendor %>/<%- project %>
 
-<% if(git) { %>[![Build Status][travis-image]][travis-url]<% } %> <% if(coverage) { %>[![Coverage Status][coveralls-image]][coveralls-url]<% } %> <% if(scrutinizer) { %>[![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url]<% } %> <% if(codeclimate) { %>[![Code Climate][codeclimate-image]][codeclimate-url]<% } %> <% if(docs) { %>[![Documentation Status][readthedocs-image]][readthedocs-url]<% } %>
+<% if(github) { %>[![Build Status][travis-image]][travis-url]<% } %> <% if(coverage) { %>[![Coverage Status][coveralls-image]][coveralls-url]<% } %> <% if(scrutinizer) { %>[![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url]<% } %> <% if(codeclimate) { %>[![Code Climate][codeclimate-image]][codeclimate-url]<% } %> <% if(docs) { %>[![Documentation Status][readthedocs-image]][readthedocs-url]<% } %>
 
 > <%- description %>
 
@@ -26,7 +26,7 @@ This library attempts to comply with [PSR-1][], [PSR-2][], and [PSR-4][]. If you
 [PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
-<% if(git) { %>[travis-image]: https://secure.travis-ci.org/<%- vendor %>/<%- project %>.svg
+<% if(github) { %>[travis-image]: https://secure.travis-ci.org/<%- vendor %>/<%- project %>.svg
 [travis-url]: https://travis-ci.org/<%- vendor %>/<%- project %>
 <% } %><% if(coverage) { %>[coveralls-image]: https://coveralls.io/repos/<%- vendor %>/<%- project %>/badge.svg?branch=master&service=github
 [coveralls-url]: https://coveralls.io/github/<%- vendor %>/<%- project %>?branch=master
