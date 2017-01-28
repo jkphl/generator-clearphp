@@ -79,11 +79,6 @@ will scaffold these files and directories for you:
 
 ```
 
-#### Composer dependencies
-
-* [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit): Unit testing framework
-* [clue/graph-composer](https://github.com/jkphl/graph-composer): Library for creating dependency graphs of your project
-
 #### Files & directories
 
 | File               | Description                                                                                                                                                                                                                                   |
@@ -99,6 +94,11 @@ will scaffold these files and directories for you:
 | `phpunit.php`      | Bootstrap file for [PHPUnit](https://github.com/sebastianbergmann/phpunit) including the Composer autoloader.                                                                                                                                 |
 | `phpunit.xml.dist` | [PHPUnit](https://github.com/sebastianbergmann/phpunit) configuration                                                                                                                                                                         |
 | `src`              | Base directory for your PHP project files. [See below](#clean-architecture) for some words on the clean architecture principles proposed by the generator.                                                                                    |
+
+#### Composer dependencies
+
+* [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit): Unit testing framework
+* [clue/graph-composer](https://github.com/jkphl/graph-composer): Library for creating dependency graphs of your project
 
 #### Scripts
 
@@ -172,12 +172,25 @@ Please be aware that **the generator doesn't create a repository on Github** for
 
 ### codeclimate
 
-The `cleanphp:codeclimate` generator integrates the [Code Climate](https://codeclimate.com) 3rd party service (account needed) and adds some configuration resources:
+The `cleanphp:codeclimate` generator integrates the [Code Climate](https://codeclimate.com) 3rd party service (account needed):
+ 
+```
+yo cleanphp:codeclimate
+```
+ 
+It adds some configuration resources:
 
 ```
 |-- .codeclimate.yml
 |-- phpmd.xml
 ```
+
+#### Files & directories
+
+| File               | Description                                                                           |
+|:-------------------|:--------------------------------------------------------------------------------------|
+| `.codeclimate.yml` | [Code Climate](https://codeclimate.com) configuration file                            |
+| `phpmd.xml`        | [PHP Mess Detector](https://phpmd.org/) configuration file (consumed by Code Climate) |
 
 #### Composer dependencies
 
@@ -201,30 +214,35 @@ Please obtain this token prior to running the generator by
 * go to `Settings > Test Coverage`,
 * scroll down, display the Travis CI options and copy the 64-character `repo_token`.
 
-#### Files & directories
-
-| File               | Description                                                                           |
-|:-------------------|:--------------------------------------------------------------------------------------|
-| `.codeclimate.yml` | [Code Climate](https://codeclimate.com) configuration file                            |
-| `phpmd.xml`        | [PHP Mess Detector](https://phpmd.org/) configuration file (consumed by Code Climate) |
-
- 
 ### Scrutinizer
 
-If you enable [scrutinizer](https://scrutinizer-ci.com/) support (account needed), the following resources are added:
+The `cleanphp:scrutinizer` generator integrates the [Scrutinizer](https://scrutinizer-ci.com/) 3rd party service (account needed)
 
 ```
-`-- .scrutinizer.yml
+yo cleanphp:scrutinizer
+```
+ 
+It adds a single configuration resource:
+
+```
+|-- .scrutinizer.yml
 ```
 
-Code coverage data submission to Scrutinizer is added to the Travis CI configuration (`.travis.yml`):
+#### Files & directories
+
+| File               | Description                                                   |
+|:-------------------|:--------------------------------------------------------------|
+| `.scrutinizer.yml` | [Scrutinizer](https://scrutinizer-ci.com/) configuration file |
+
+#### Travis configuration
+
+The generator adds two `after_script` entries to your Travis CI configuration file, used for submitting code coverage data to Scrutinizer:
 
 ```
 after_script:
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi;'
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml; fi;'
 ```
-
  
 ### Code coverage
 
