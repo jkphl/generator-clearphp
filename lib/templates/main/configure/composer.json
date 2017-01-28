@@ -31,5 +31,8 @@
     "psr-4": {
       "<%- namespace %>\\": "src/"
     }
-  }<% } %>
+  }<% } %>,
+  "scripts": {
+    "depgraph": "vendor/clue/graph-composer/bin/graph-composer --no-dev export . doc/dependencies.svg"
+  }
 }
