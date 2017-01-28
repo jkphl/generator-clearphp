@@ -137,7 +137,7 @@ stored in the `doc` directory:
 
 By default, the dependency graph is embedded into the `README.md`. Unless you run the [cleanphp:github](#github) subgenerator you'll have to create and update the graph manually each time you change the Composer dependencies of your project. 
 
-### github
+### github <img src="https://assets-cdn.github.com/pinned-octocat.svg" height="24" valign="middle"/>
 
 The `cleanphp:github` subgenerator is an essential requirement for most other subgenerators and will connect your project to a Github repository.
 
@@ -170,29 +170,44 @@ Please be aware that **the generator doesn't create a repository on Github** for
 | `.travis.yml`                | Configuration file for the [Travis CI Service](https://travis-ci.org/). For Travis to build your project on every commit, you have to manually activate the project repository in your Travis profile. |
 
 
-
 ### codeclimate
 
-This generator integrates the [Code climate](https://codeclimate.com) support (account needed), the following resources are added:
+The `cleanphp:codeclimate` generator integrates the [Code Climate](https://codeclimate.com) 3rd party service (account needed) and adds some configuration resources:
 
 ```
 |-- .codeclimate.yml
-`-- phpmd.xml
+|-- phpmd.xml
 ```
 
-The following composer development dependencies are added:
+#### Composer dependencies
 
-* `codeclimate/php-test-reporter`
+* [codeclimate/php-test-reporter](https://github.com/codeclimate/php-test-reporter): The test reporter used by Travis CI to send coverage data to the Code Climate service
 
-The following lines are added to the Travis CI configuration (`.travis.yml`):
+#### Travis configuration
 
-```
+Among other things, the generator adds a Code Climate repository token to your Travis CI configuration file:
+
+```yaml
 after_script:
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then vendor/bin/test-reporter; fi;'
 addons:
     code_climate:
-        repo_token: <CODE-CLIMATE-REPO-TOKEN-HERE>
+        repo_token: <CODE-CLIMATE-REPO-TOKEN>
  ```
+
+Please obtain this token prior to running the generator by
+
+* adding your Github repository as a project to your Code Climate profile,
+* go to `Settings > Test Coverage`,
+* scroll down, display the Travis CI options and copy the 64-character `repo_token`.
+
+#### Files & directories
+
+| File               | Description                                                                           |
+|:-------------------|:--------------------------------------------------------------------------------------|
+| `.codeclimate.yml` | [Code Climate](https://codeclimate.com) configuration file                            |
+| `phpmd.xml`        | [PHP Mess Detector](https://phpmd.org/) configuration file (consumed by Code Climate) |
+
  
 ### Scrutinizer
 
