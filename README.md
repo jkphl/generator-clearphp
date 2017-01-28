@@ -2,7 +2,7 @@ generator-cleanphp
 ==================
 [![NPM version][npm-image]][npm-url] [![NPM downloads][npm-downloads]][npm-url] [![Dependency Status][depstat-image]][depstat-url] [![Development Dependency Status][devdepstat-image]][devdepstat-url]
 
-is a Yeoman generator for scaffolding PHP projects following a custom implementation of clean architecture principles. During scaffolding, you can select from a variety of 3rd party tools and service intergrations.
+is a Yeoman generator for scaffolding [Composer](https://getcomposer.org/) based PHP projects. It supports a variety of 3rd party tools and intergrations and advocates the use of a custom [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html) implementation.
 
 
 Usage

@@ -1,7 +1,7 @@
 {
   "name": "generator-cleanphp",
   "version": "0.1.0",
-  "description": "PHP project scaffold following clean architecture principles and featuring a variety of integrations",
+  "description": "Scaffold for Composer based PHP projects with a lot of integrations, advocating a custom Clean Architecture implementation",
   "main": "app/index.js",
   "scripts": {
     "test": "test"
