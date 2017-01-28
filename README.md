@@ -107,6 +107,7 @@ will scaffold these files and directories for you:
 
 * [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit): Unit testing framework
 * [clue/graph-composer](https://github.com/jkphl/graph-composer): Library for creating a dependency graph of your project
+* [squizlabs/php_codesniffer](https://github.com/squizlabs/PHP_CodeSniffer): PHP code tokenizer and linter
 
 
 #### Scripts
@@ -146,6 +147,21 @@ stored in the `doc` directory:
 ```
 
 By default, the dependency graph is embedded into the `README.md`. Unless you run the [cleanphp:github](#github) subgenerator, you'll have to create and update the graph manually each time you change the Composer dependencies of your project. 
+
+
+##### PHP code style linter
+
+You can use the `check-style` script to test your PHP files for [PSR-2] compliance:
+ 
+```bash
+composer run check-style
+```
+
+You can automatically fix a wide range of coding style violations with the `fix-style` script:
+
+```bash
+composer run fix-style
+```
 
 
 ### github
@@ -414,3 +430,4 @@ Copyright © 2017 Joschi Kuphal <joschi@kuphal.net> / [@jkphl](https://twitter.c
 [depstat-image]: https://david-dm.org/jkphl/generator-cleanphp.svg
 [devdepstat-url]: https://david-dm.org/jkphl/generator-cleanphp#info=devDependencies
 [devdepstat-image]: https://david-dm.org/jkphl/generator-cleanphp/dev-status.svg
+[PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
