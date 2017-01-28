@@ -11,7 +11,26 @@
     "url": "git+https://github.com/jkphl/generator-php.git"
   },
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "php",
+    "git",
+    "composer",
+    "packagist",
+    "phpunit",
+    "phplint",
+    "phpcs",
+    "php-cs-fixer",
+    "phpmd",
+    "phpcpd",
+    "travis",
+    "codeclimate",
+    "coverage",
+    "coveralls",
+    "scrutinizer",
+    "mkdocs",
+    "phpdox",
+    "phploc",
+    "readthedocs"
   ],
   "author": "Joschi Kuphal <joschi@kuphal.net> (https://jkphl.is)",
   "license": "MIT",
@@ -20,25 +39,35 @@
   },
   "homepage": "https://github.com/jkphl/generator-php#readme",
   "files": [
+    "generators/apidocs",
     "generators/app",
+    "generators/codeclimate",
+    "generators/coverage",
+    "generators/docs",
+    "generators/git",
     "generators/main",
+    "generators/scrutinizer",
     "lib"
   ],
   "dependencies": {
+    "chalk": "^1.1.3",
+    "deepmerge": "^1.3.2",
     "ejs": "^2.5.5",
-    "fs-extra": "^1.0.0",
+    "fs-extra": "^2.0.0",
     "generator-license": "^5.1.0",
     "git-url-parse": "^6.2.0",
     "js-yaml": "^3.7.0",
+    "klaw-sync": "^1.1.0",
     "mkdirp": "^0.5.1",
+    "semver": "^5.3.0",
     "validator": "^6.2.1",
-    "yeoman-generator": "^1.0.1",
+    "yeoman-generator": "^1.1.0",
     "yosay": "^1.2.1"
-  },
-  "devDependencies": {
-    "mocha": "*"
   },
   "peerDependencies": {
     "yo": "^1.8.5"
+  },
+  "engines": {
+    "node": ">=4.0"
   }
 }
