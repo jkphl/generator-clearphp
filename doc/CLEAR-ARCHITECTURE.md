@@ -55,7 +55,7 @@ Valid inward cross-boundary dependencies include:
 
 In order to not violate the Dependency Rule, the [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) must be used whenever complex data needs to be passed to an inward layer. Instead of expecting and directly referencing a lower-level component (e.g. as function parameter), a layer only provides and references an interface that needs to be implemented by the caller. This way, the conventional dependency relationship in inverted and the high-level layer doesn't depend on lower-level ones.
 
-![Dependency inversion by using an interface / abstract service class](https://cdn.rawgit.com/jkphl/generator-cleanphp/3306407b/doc/clear-architecture-dependency-inversion.svg)
+![Dependency inversion by using an interface / abstract service class](https://cdn.rawgit.com/jkphl/generator-cleanphp/4b0317a9/doc/clear-architecture-dependency-inversion.svg)
 
 
 ## Directory layout
