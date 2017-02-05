@@ -40,11 +40,11 @@ In my experience, development approaches like [Domain-Driven Design](https://en.
 
 <img src="https://cdn.rawgit.com/jkphl/generator-cleanphp/3306407b/doc/clear-architecture-dependency-rule.svg" alt="Clear Architecture tiers" align="right" width="50%"/>
 
-In the Clear Architecture, source code dependencies may **only ever point to the same or an inward tier**.
+In the Clear Architecture, source code dependencies may **only ever point to the same or an inward layer**.
 
 > Nothing in an inner circle can know anything at all about something in an outer circle. In particular, the name of something declared in an outer circle must not be mentioned by the code in an inner circle. That includes, functions, classes, variables or any other named software entity.
 >
-> *[The Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html), Bob Martin*
+> *[The Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html), Robert C. Martin*
 
 Valid inward cross-boundary dependencies include:
 
@@ -54,6 +54,8 @@ Valid inward cross-boundary dependencies include:
 * Using classes, interfaces etc. for [typing](https://en.wikipedia.org/wiki/Type_system)
 
 In order to not violate the Dependency Rule, the [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) must be used whenever complex data needs to be passed to an inward layer. Instead of expecting and directly referencing a lower-level component (e.g. as function parameter), a layer only provides and references an interface that needs to be implemented by the caller. This way, the conventional dependency relationship in inverted and the high-level layer doesn't depend on lower-level ones.
+
+![Dependency inversion by using an interface / abstract service class](https://cdn.rawgit.com/jkphl/generator-cleanphp/3306407b/doc/clear-architecture-dependency-inversion.svg)
 
 
 ## Directory layout
