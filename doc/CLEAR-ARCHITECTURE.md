@@ -13,7 +13,7 @@ In my experience, development approaches like [Domain-Driven Design](https://en.
 
 ## Three-tier architecture
 
-<img src="https://rawgit.com/jkphl/generator-cleanphp/master/doc/clear-architecture-domain-application-client-tiers.svg" alt="Clear Architecture tiers" align="right" width="50%"/>
+<img src="https://cdn.rawgit.com/jkphl/generator-cleanphp/3306407b/doc/clear-architecture-dependency-rule.svg" alt="Clear Architecture tiers" align="right" width="50%"/>
 
 ### ① Domain tier
 
@@ -37,14 +37,12 @@ In my experience, development approaches like [Domain-Driven Design](https://en.
 
 ### The Dependency rule
 
-<img src="https://rawgit.com/jkphl/generator-cleanphp/master/doc/clear-architecture-dependency-rule.svg" alt="Clear Architecture tiers" align="right" width="50%"/>
+<img src="https://cdn.rawgit.com/jkphl/generator-cleanphp/3306407b/doc/clear-architecture-dependency-rule.svg" alt="Clear Architecture tiers" align="right" width="50%"/>
 
 In the Clear Architecture, source code dependencies may **only ever point to an inward or the same tier**.
 
 > Nothing in an inner circle can know anything at all about something in an outer circle. In particular, the name of something declared in an outer circle must not be mentioned by the code in the an inner circle. That includes, functions, classes. variables, or any other named software entity.
 > *[The Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html), Bob Martin*
-
-
 
 
 ## Directory layout
