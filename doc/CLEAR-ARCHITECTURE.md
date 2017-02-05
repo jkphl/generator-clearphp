@@ -31,20 +31,18 @@ In my experience, development approaches like [Domain-Driven Design](https://en.
 * Low-level mechanisms and implementation details
 * Public **ports** for external agencies (APIs, MVC, CLI, etc.)
 * **Infrastructural** details (persistence, database, framework & 3rd party library bindings)
-* Unit, functional and integration **tests**  
+* Unit, functional and integration **tests** (= specialized type of client) 
 
 
-## Rules
+## Rules & Conventions
 
-### The Dependency rule
+### The Dependency Rule
 
 <img src="https://cdn.rawgit.com/jkphl/generator-cleanphp/3306407b/doc/clear-architecture-dependency-rule.svg" alt="Clear Architecture tiers" align="right" width="50%"/>
 
 In the Clear Architecture, source code dependencies may **only ever point to the same or an inward layer**.
 
-> Nothing in an inner circle can know anything at all about something in an outer circle. In particular, the name of something declared in an outer circle must not be mentioned by the code in an inner circle. That includes, functions, classes, variables or any other named software entity.
->
-> *[The Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html), Robert C. Martin*
+> Nothing in an inner circle can know anything at all about something in an outer circle. In particular, the name of something declared in an outer circle must not be mentioned by the code in an inner circle. That includes, functions, classes, variables or any other named software entity. (*[The Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html), Robert C. Martin*)
 
 Valid inward cross-boundary dependencies include:
 
@@ -53,9 +51,22 @@ Valid inward cross-boundary dependencies include:
 * Calling functions and methods
 * Using classes, interfaces etc. for [typing](https://en.wikipedia.org/wiki/Type_system)
 
+Strictly adhering to the Dependency Rule makes your application highly testable and very flexible in terms of implementation details (choice of a database platform or persistence strategy, client APIs etc.).
+
+### The Dependency Inversion Principle
+
 In order to not violate the Dependency Rule, the [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) must be used whenever complex data needs to be passed to an inward layer. Instead of expecting and directly referencing a lower-level component (e.g. as function parameter), a layer only provides and references an interface that needs to be implemented by the caller. This way, the conventional dependency relationship in inverted and the high-level layer doesn't depend on lower-level ones.
 
 ![Dependency inversion by using an interface / abstract service class](https://cdn.rawgit.com/jkphl/generator-cleanphp/4b0317a9/doc/clear-architecture-dependency-inversion.svg)
+
+
+### Naming conventions
+
+The following special elements (including their files) must be named after their role:
+
+* Interfaces must use the **`Interface`** suffix (e.g. `MyCustomInterface`)
+* Traits must use the **`Trait`** suffix (e.g. `MyCustomTrait`)
+* Factories must use the **`Factory`** suffix (e.g. `MyCustomPurposeFactory`)
 
 
 ## Directory layout
@@ -85,14 +96,6 @@ ___
 
 * In a PHP implementation, [PSR-4] must be applied, with `<Module>` being the **base directory** corresponding to the **namespace prefix** (e.g. `Jkphl\MyApp`) as per [PSR-4].
 
-
-### Naming conventions
-
-The following special elements (and their files) must be named after their role:
-
-* Interfaces must use the **`Interface`** suffix (e.g. `MyCustomPurposeInterface`)
-* Traits must use the **`Trait`** suffix (e.g. `MyCustomPurposeTrait`)
-* Factories must use the **`Factory`** suffix (e.g. `MyCustomPurposeFactory`)
 
 [UpperCamelCase]: https://en.wikipedia.org/wiki/Camel_case
 [PSR-4]: http://www.php-fig.org/psr/psr-4/
