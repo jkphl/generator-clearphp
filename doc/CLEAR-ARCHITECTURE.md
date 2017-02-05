@@ -13,7 +13,7 @@ In my experience, development approaches like [Domain-Driven Design](https://en.
 
 ## Three-tier architecture
 
-<img src="https://cdn.rawgit.com/jkphl/generator-cleanphp/3306407b/doc/clear-architecture-dependency-rule.svg" alt="Clear Architecture tiers" align="right" width="50%"/>
+<img src="https://cdn.rawgit.com/jkphl/generator-cleanphp/3306407b/doc/clear-architecture-domain-application-client-tiers.svg" alt="Clear Architecture tiers" align="right" width="50%"/>
 
 ### ① Domain tier
 
