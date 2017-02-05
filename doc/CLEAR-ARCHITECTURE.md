@@ -13,7 +13,7 @@ In my experience, development approaches like [Domain-Driven Design](https://en.
 
 ## Three-tier architecture
 
-<img src="https://rawgit.com/jkphl/generator-cleanphp/master/doc/dapit-layers.svg" alt="Clear Architecture tiers" style="float:right"/>
+<img src="https://rawgit.com/jkphl/generator-cleanphp/master/doc/clear-architecture-domain-application-client-tiers.svg" alt="Clear Architecture tiers" align="right" width="50%"/>
 
 ### ① Domain tier
 
@@ -27,6 +27,7 @@ In my experience, development approaches like [Domain-Driven Design](https://en.
 * Translating between external requests and domain logic (back and forth)
 
 ### ③ Client tier (3 sectors)
+
 * Public **ports** for external agencies (APIs, MVC, CLI, etc.)
 * **Infrastructural** details (persistence, database, framework & 3rd party library bindings)
 * Unit, functional and integration **tests**  
@@ -36,10 +37,13 @@ In my experience, development approaches like [Domain-Driven Design](https://en.
 
 ### The Dependency rule
 
-In the Clear Architecture, source code dependencies may ever **only point to an inward or the very same tier**.
+<img src="https://rawgit.com/jkphl/generator-cleanphp/master/doc/clear-architecture-dependency-rule.svg" alt="Clear Architecture tiers" align="right" width="50%"/>
+
+In the Clear Architecture, source code dependencies may **only ever point to an inward or the same tier**.
 
 > Nothing in an inner circle can know anything at all about something in an outer circle. In particular, the name of something declared in an outer circle must not be mentioned by the code in the an inner circle. That includes, functions, classes. variables, or any other named software entity.
 > *[The Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html), Bob Martin*
+
 
 
 
@@ -79,6 +83,5 @@ The following special elements (and their files) must be named after their role:
 * Traits must use the **`Trait`** suffix (e.g. `MyCustomPurposeTrait`)
 * Factories must use the **`Factory`** suffix (e.g. `MyCustomPurposeFactory`)
 
-[RFC 2119]: http://tools.ietf.org/html/rfc2119
 [UpperCamelCase]: https://en.wikipedia.org/wiki/Camel_case
 [PSR-4]: http://www.php-fig.org/psr/psr-4/
