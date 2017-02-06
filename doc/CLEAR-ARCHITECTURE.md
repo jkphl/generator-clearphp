@@ -2,6 +2,8 @@
 
 In my experience, development approaches like [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) and structural concepts as the [Hexagonal Architecture](http://alistair.cockburn.us/Hexagonal+architecture) or the [Onion Architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/) carry a lot of wisdom but don't necessarily provide practical guidance when it comes to starting off with a new project. After several unsatisfactory experiments, I felt a sort of relief when I first read about the [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html "The Clean Architecture by Bob Martin"), which nicely aggregates some high-level concepts while simplifying things at the same time. However, even the Clean Architecture doesn't provide a simple-to-follow recipe for layouting a project, naming classes, files and directories and deciding where to settle a particular functionality. So I trial-and-errored myself to the point where I had a rather concise, opinionated implementation of the Clean Architecture that prove useful in several projects, even and especially in combination with each other. Le me introduce you to the **Clear Architecture**.  
 
+*Note: I won't go into too much detail regarding the various high-level concepts but rather focus on the practical side of things. Please see at the end for a list of readings I recommend for further understanding. Also, while I mainly use the Clear Architecture for PHP projects, it should be easily adoptable to other environments as well. Please let me know if you succeed (or fail) in doing so.*
+
 
 ## Key objectives
 
@@ -56,11 +58,16 @@ In my experience, development approaches like [Domain-Driven Design](https://en.
 
 * The top level directory `src` separates the actual source files from other package resources, e.g. documentation, configuration files, 3rd party libraries etc. 
 * `<Module>` must be replaced with a vendor-unique module name in [UpperCamelCase] writing (e.g. `MyApp`).
-* The 3rd level is made up of five directories representing the architectural tiers and sectors (see above).
+* The 3rd level is made up of five directories representing the main architectural tiers and sectors (see above).
 
-### Application specific structure
+### Application specifics
 
-* TODO: Deeper-lying directories (e.g. `Facade`, `Contract`, `Service`, `Factories` etc.) 
+Inside the five main directories, your application may add additional structures as needed. However, to keep things consistent, I recommend sticking to these conventions:
+
+* Directory and file names are always to be written in **UpperCamelCase**. I prefer using singular expressions wherever possible (i.e. `Factory` instead of `Factories`).
+* If you have **multiple similar components, that are mostly used by external agents** (e.g. on a lower architectural level or by an external package), **keep them at a common central location**. As an example, I typically use directories named `Facade`, `Contract`, `Service` or `Factory` for grouping classes with similar functionality.
+* **Keep closely related components together**. If you have, for instance, a class definition that implements an interface as described in [The Dependency Inversion Principle](#the-dependency-inversion-principle), put them into the same directory instead of spreading them across the file system. This rule commonly outweighs the previous one — it might be a matter of personal taste in some situations though.
+* If a lower architectural layer "mirrors" and extends the structure of a higher one, e.g. by providing concrete implementations of interfaces defined on the higher level, **stick to the same directory and file names** as much as possible. This will help with keeping the cross-boundary relationships in mind.
 
 
 ## Rules & Conventions
@@ -101,8 +108,14 @@ ___
 
 ## Considerations for PHP implementations
 
-* In a PHP implementation, [PSR-4] must be applied, with `<Module>` being the **base directory** corresponding to the **namespace prefix** (e.g. `Jkphl\MyApp`) as per [PSR-4].
+* In a PHP implementation, [PSR-4] should be applied, with `<Module>` being the **base directory** corresponding to the **namespace prefix** (e.g. `Jkphl\MyApp`) as per [PSR-4].
+* I very much recommend using [Composer](https://getcomposer.org "Composer — Dependency Manager for PHP") as the principal dependency manager for your projects. By default, Composer will install all package dependencies into the `vendor` top-level directory. 
 
+
+## Recommendations
+
+* [Clean Architecture in PHP](https://leanpub.com/cleanphp) by Kristopher Wilson
+* [Domain-Driven Design in PHP](https://leanpub.com/ddd-in-php) by Carlos Buenosvinos et al.
 
 [UpperCamelCase]: https://en.wikipedia.org/wiki/Camel_case
 [PSR-4]: http://www.php-fig.org/psr/psr-4/
