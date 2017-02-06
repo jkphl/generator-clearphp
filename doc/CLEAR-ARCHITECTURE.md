@@ -1,6 +1,6 @@
 # A Clear Architecture
 
-In my experience, development approaches like [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) and structural concepts as the [Hexagonal Architecture](http://alistair.cockburn.us/Hexagonal+architecture) or the [Onion Architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/) bear a lot of wisdom but don't necessarily provide practical guidance when it comes to starting off with a new project. After several unsatisfactory experiments, I felt a sort of relief when I first read about the [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html "The Clean Architecture by Bob Martin"), which nicely aggregates some high-level concepts while simplifying things at the same time. However, even the Clean Architecture doesn't provide a simple-to-follow recipe for layouting a project, naming classes, files and directories and deciding where to settle a particular functionality. So I trial-and-errored myself to the point where I had a rather concise, opinionated implementation of the Clean Architecture that prove useful in several projects, also in combination with each other. I call it **The Clear Architecture**.  
+In my experience, development approaches like [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) and structural concepts as the [Hexagonal Architecture](http://alistair.cockburn.us/Hexagonal+architecture) or the [Onion Architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/) carry a lot of wisdom but don't necessarily provide practical guidance when it comes to starting off with a new project. After several unsatisfactory experiments, I felt a sort of relief when I first read about the [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html "The Clean Architecture by Bob Martin"), which nicely aggregates some high-level concepts while simplifying things at the same time. However, even the Clean Architecture doesn't provide a simple-to-follow recipe for layouting a project, naming classes, files and directories and deciding where to settle a particular functionality. So I trial-and-errored myself to the point where I had a rather concise, opinionated implementation of the Clean Architecture that prove useful in several projects, even and especially in combination with each other. Le me introduce you to the **Clear Architecture**.  
 
 
 ## Key objectives
@@ -20,25 +20,54 @@ In my experience, development approaches like [Domain-Driven Design](https://en.
 * **Domain** objects & services
 * High-level business rules
 
+> In a banking application, the domain layer holds definitions of a bank account, an account holder, a currency etc. as well as their relationships with each other.
+
 ### ② Application tier
 
-* **Application** specific business rules / services
-* Use cases orchestrating the domain objects
+* **Application** specific business rules & services
+* Use cases orchestrating domain objects & services
 * Translating between external requests and domain logic (back and forth)
+
+> The application layer provides a currency exchange service, executes different types of bank transactions and so on.  
 
 ### ③ Client tier (3 sectors)
 
-* Low-level mechanisms and implementation details
-* Public **ports** for external agencies (APIs, MVC, CLI, etc.)
-* **Infrastructural** details (persistence, database, framework & 3rd party library bindings)
-* Unit, functional and integration **tests** (= specialized type of client) 
+* Low-level implementation details and mechanisms
+* Public **ports** for external agencies (APIs, CLI, MVC components, etc.)
+* **Infrastructural** details (persistence, database, frameworks, 3rd party library bindings)
+* Unit, functional and integration **tests**
+
+> The client layer implements the persistence infrastructure (e.g. a database), provides a web interface for browser based online banking as well as a [FinTS](https://en.wikipedia.org/wiki/FinTS) port to be used by external applications. Also, it holds and runs a suite of tests — highly specialized clients — as a means of overall quality assurance.
+
+
+## Directory layout
+
+### Base skeleton
+
+```
+`-- src
+    `-- <Module> 
+        |-- Application
+        |-- Domain
+        |-- Infrastructure
+        |-- Ports
+        `-- Tests
+```
+
+* The top level directory `src` separates the actual source files from other package resources, e.g. documentation, configuration files, 3rd party libraries etc. 
+* `<Module>` must be replaced with a vendor-unique module name in [UpperCamelCase] writing (e.g. `MyApp`).
+* The 3rd level is made up of five directories representing the architectural tiers and sectors (see above).
+
+### Application specific structure
+
+* TODO: Deeper-lying directories (e.g. `Facade`, `Contract`, `Service`, `Factories` etc.) 
 
 
 ## Rules & Conventions
 
-### The Dependency Rule
-
 <img src="https://cdn.rawgit.com/jkphl/generator-cleanphp/3306407b/doc/clear-architecture-dependency-rule.svg" alt="Clear Architecture tiers" align="right" width="50%"/>
+
+### The Dependency Rule
 
 In the Clear Architecture, source code dependencies may **only ever point to the same or an inward layer**.
 
@@ -68,28 +97,6 @@ The following special elements (including their files) must be named after their
 * Traits must use the **`Trait`** suffix (e.g. `MyCustomTrait`)
 * Factories must use the **`Factory`** suffix (e.g. `MyCustomPurposeFactory`)
 
-
-## Directory layout
-
-### Base skeleton
-
-```
-`-- src
-    `-- <Module> 
-        |-- Application
-        |-- Domain
-        |-- Infrastructure
-        |-- Ports
-        `-- Tests
-```
-
-* The top level directory `src` separates the actual program source files from other package resources, e.g. documentation, configuration, 3rd party libraries etc. 
-* `<Module>` must be replaced with a vendor-unique module name written in [UpperCamelCase] (e.g. `MyApp`).
-* The 3rd level is made up of directories representing the architectural tiers and sectors.
-
-### Application specific structure
-
-* TODO: Deeper-lying directories (e.g. `Facade`, `Contract`, `Service`, `Factories` etc.) 
 ___
 
 ## Considerations for PHP implementations
