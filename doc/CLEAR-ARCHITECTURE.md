@@ -42,7 +42,7 @@ In my experience, development approaches like [Domain-Driven Design] and structu
 * **Infrastructural** details (persistence, database, frameworks, 3rd party library bindings)
 * Unit, functional and integration **tests**
 
-> The client layer implements the persistence infrastructure (e.g. a database), provides a web interface for browser based online banking as well as a [FinTS] port to be used by external applications. Also, it holds and runs a suite of tests as a means of overall quality assurance.
+> The client layer implements the persistence infrastructure (e.g. a database), provides a web interface for online banking and a [FinTS] interface to be used by external applications.
 
 #### Ports
 
@@ -69,7 +69,7 @@ The *Infrastructure* sector is not strictly private, but it holds all the implem
 
 #### Tests
 
-The *Tests* sector holds all resources required for [testing your application] on various levels. In general, tests are nothing more than highly specialized clients of your application and must be granted full access to your ③ client and ② application layers. Test resources may be accessed by external agencies (e.g. by extension) and typically consist of:
+The *Tests* sector holds all resources required for [testing your application] on various levels. In general, tests are nothing more than highly specialized clients of your application and must be granted full access to your ③ client and ② application layers. Test resources may also be accessed by external agencies (e.g. by extension) and typically consist of:
 
 * Unit, integration, interface or acceptance test cases
 * Test fixtures
