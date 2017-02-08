@@ -401,9 +401,9 @@ Your documentation will be rendered into the `apidocs` directory (created if nec
 To use the scripts on Windows, edit the `scripts` section of your `composer.json` manually and add a `.bat` file extension to all the `vendor/bin/*` binary calls.
 
 
-Clean Architecture
+Clear Architecture
 ------------------
-Please see the [recommended architecture principles](doc/CLEAN-ARCHITECTURE-PRINCIPLES.md) for an inspiration on how to structure your PHP application.
+Please see the [Clear Architecture documentation](https://github.com/jkphl/clear-architecture) for an inspiration on how to structure your PHP application.
 
 
 Known problems / To-do
