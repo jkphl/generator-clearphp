@@ -1,4 +1,4 @@
-generator-cleanphp
+generator-clearphp
 ==================
 [![NPM version][npm-image]][npm-url] [![NPM downloads][npm-downloads]][npm-url] [![Dependency Status][depstat-image]][depstat-url] [![Development Dependency Status][devdepstat-image]][devdepstat-url]
 
@@ -11,7 +11,7 @@ Usage
 To **install the PHP project generator** and its dependencies, please run:
 
 ```bash
-npm install -g yo generator-cleanphp
+npm install -g yo generator-clearphp
 ```
 
 To **scaffold a new PHP project**, create a new directory, `cd` into it and run the generator:
@@ -19,7 +19,7 @@ To **scaffold a new PHP project**, create a new directory, `cd` into it and run 
 ```bash
 mkdir vendorname-project
 cd vendorname-project
-yo cleanphp
+yo clearphp
 ```
 
 
@@ -28,37 +28,37 @@ Generators
 
 The generator consists of several subgenerators:
  
-* [cleanphp](#app) (aka [cleanphp:app](#app))
-* [cleanphp:main](#main)
-* [cleanphp:github](#github)
-* [cleanphp:codeclimate](#codeclimate)
-* [cleanphp:coverage](#coverage)
-* [cleanphp:scrutinizer](#scrutinizer)
-* [cleanphp:docs](#docs)
-* [cleanphp:apidocs](#apidocs)
+* [clearphp](#app) (aka [clearphp:app](#app))
+* [clearphp:main](#main)
+* [clearphp:github](#github)
+* [clearphp:codeclimate](#codeclimate)
+* [clearphp:coverage](#coverage)
+* [clearphp:scrutinizer](#scrutinizer)
+* [clearphp:docs](#docs)
+* [clearphp:apidocs](#apidocs)
 
 The subgenerators partly depend on each other:
 
-![Subgenerator dependencies](https://rawgit.com/jkphl/generator-cleanphp/master/doc/generator-dependencies.svg)
+![Subgenerator dependencies](https://rawgit.com/jkphl/generator-clearphp/master/doc/generator-dependencies.svg)
 
 Each subgenerator will only run once and automatically pull in the other generators it depends on. You can run them individually at any time, using them as supplementary add-ons to your project. 
 
 
 ### app
 
-The `cleanphp:app` subgenerator is basically a meta generator pulling in all of the other subgenerators.
+The `clearphp:app` subgenerator is basically a meta generator pulling in all of the other subgenerators.
 
 ```bash
-yo cleanphp
+yo clearphp
 ```
 
 
 ### main
 
-The `cleanphp:main` generator creates the basic project structure and setup. During installation, you will be asked a couple of questions like the vendor and project name, the minimum PHP version and some information about the project author.
+The `clearphp:main` generator creates the basic project structure and setup. During installation, you will be asked a couple of questions like the vendor and project name, the minimum PHP version and some information about the project author.
 
 ```bash
-yo cleanphp:main
+yo clearphp:main
 ```
 
 will scaffold these files and directories for you:
@@ -97,10 +97,10 @@ will scaffold these files and directories for you:
 | `LICENCE`          | The license you selected during installation.                                                                                                                                                                                                |
 | `README.md`        | The main README file of your project. Be aware that it might be amended and overwritten when you run additional subgenerators at a later time. However, you'll always have the chance to review the differences (if any) and skip an update. |
 | `composer.json`    | The [Composer](https://getcomposer.org/) configuration of your project.                                                                                                                                                                      |
-| `doc`              | This is the directory where your project documentation should reside. You can add some basic files with the [cleanphp:docs](#docs) generator.                                                                                                |
+| `doc`              | This is the directory where your project documentation should reside. You can add some basic files with the [clearphp:docs](#docs) generator.                                                                                                |
 | `phpunit.php`      | Bootstrap file for [PHPUnit](https://github.com/sebastianbergmann/phpunit) including the Composer autoloader.                                                                                                                                |
 | `phpunit.xml.dist` | [PHPUnit](https://github.com/sebastianbergmann/phpunit) configuration                                                                                                                                                                        |
-| `src`              | Base directory for your PHP project source files. [See below](#clean-architecture) for some words on the clean architecture principles propagated by the generator.                                                                          |
+| `src`              | Base directory for your PHP project source files. [See below](#clear-architecture) for some words on the clean architecture principles propagated by the generator.                                                                          |
 
 
 #### Composer dependencies
@@ -137,7 +137,7 @@ composer run depgraph
 
 This will create an SVG file like this:
 
-![PHP project dependency graph (example)](https://rawgit.com/jkphl/generator-cleanphp/master/doc/dependency-graph.svg)
+![PHP project dependency graph (example)](https://rawgit.com/jkphl/generator-clearphp/master/doc/dependency-graph.svg)
 
 stored in the `doc` directory:
 
@@ -146,7 +146,7 @@ stored in the `doc` directory:
 |   `-- dependencies.svg
 ```
 
-By default, the dependency graph is embedded into the `README.md`. Unless you run the [cleanphp:github](#github) subgenerator, you'll have to create and update the graph manually each time you change the Composer dependencies of your project. 
+By default, the dependency graph is embedded into the `README.md`. Unless you run the [clearphp:github](#github) subgenerator, you'll have to create and update the graph manually each time you change the Composer dependencies of your project. 
 
 
 ##### PHP code style linter
@@ -166,10 +166,10 @@ composer run fix-style
 
 ### github
 
-The `cleanphp:github` subgenerator is an essential requirement for most of the other subgenerators and will connect your project to a Github repository.
+The `clearphp:github` subgenerator is an essential requirement for most of the other subgenerators and will connect your project to a Github repository.
 
 ```bash
-yo cleanphp:github
+yo clearphp:github
 ```
 
 The generator initializes a local Git repository and adds some files:
@@ -200,10 +200,10 @@ Please be aware that **the generator doesn't create a remote repository on Githu
 
 ### codeclimate
 
-The `cleanphp:codeclimate` generator integrates the [Code Climate](https://codeclimate.com) 3rd party service (account needed):
+The `clearphp:codeclimate` generator integrates the [Code Climate](https://codeclimate.com) 3rd party service (account needed):
  
 ```bash
-yo cleanphp:codeclimate
+yo clearphp:codeclimate
 ```
  
 It adds some configuration resources:
@@ -248,10 +248,10 @@ Please obtain this token prior to running the generator by
 
 ### coverage
 
-The `cleanphp:coverage` generator integrates the [Coveralls](https://coveralls.io/) 3rd party service (account needed):
+The `clearphp:coverage` generator integrates the [Coveralls](https://coveralls.io/) 3rd party service (account needed):
  
 ```bash
-yo cleanphp:coverage
+yo clearphp:coverage
 ```
 
 
@@ -277,10 +277,10 @@ You need to manually [activate the Github repository](https://coveralls.io/repos
 
 ### scrutinizer
 
-The `cleanphp:scrutinizer` generator integrates the [Scrutinizer](https://scrutinizer-ci.com/) 3rd party service (account needed)
+The `clearphp:scrutinizer` generator integrates the [Scrutinizer](https://scrutinizer-ci.com/) 3rd party service (account needed)
 
 ```bash
-yo cleanphp:scrutinizer
+yo clearphp:scrutinizer
 ```
  
 It adds a single configuration resource:
@@ -315,10 +315,10 @@ You need to manually [add your Github repository](https://scrutinizer-ci.com/new
 
 ### docs
 
-The `cleanphp:docs` generator enables the [Read the Docs](https://readthedocs.org/) 3rd party service to render an online documentation of your project resources (account needed):
+The `clearphp:docs` generator enables the [Read the Docs](https://readthedocs.org/) 3rd party service to render an online documentation of your project resources (account needed):
  
 ```bash
-yo cleanphp:docs
+yo clearphp:docs
 ```
  
 It adds some configuration and example documentation resources:
@@ -350,10 +350,10 @@ To render an online documentation of your project, you have to
 
 ### apidocs
 
-The `cleanphp:apidocs` generator installs some tools which can automatically create a rich API documentation of your project (requires PHP 5.6+):
+The `clearphp:apidocs` generator installs some tools which can automatically create a rich API documentation of your project (requires PHP 5.6+):
 
 ```bash
-yo cleanphp:apidocs
+yo clearphp:apidocs
 ```
  
 It adds some configuration resources:
@@ -420,14 +420,14 @@ Please refer to the [changelog](CHANGELOG.md) for a complete release history.
 
 Legal
 -----
-Copyright © 2017 Joschi Kuphal <joschi@kuphal.net> / [@jkphl](https://twitter.com/jkphl). *generator-cleanphp* is licensed under the terms of the [MIT license](LICENSE.txt).
+Copyright © 2017 Joschi Kuphal <joschi@kuphal.net> / [@jkphl](https://twitter.com/jkphl). *generator-clearphp* is licensed under the terms of the [MIT license](LICENSE.txt).
 
 
-[npm-url]: https://npmjs.org/package/generator-cleanphp
-[npm-image]: https://badge.fury.io/js/generator-cleanphp.svg
-[npm-downloads]: https://img.shields.io/npm/dm/generator-cleanphp.svg
-[depstat-url]: https://david-dm.org/jkphl/generator-cleanphp#info=dependencies
-[depstat-image]: https://david-dm.org/jkphl/generator-cleanphp.svg
-[devdepstat-url]: https://david-dm.org/jkphl/generator-cleanphp#info=devDependencies
-[devdepstat-image]: https://david-dm.org/jkphl/generator-cleanphp/dev-status.svg
+[npm-url]: https://npmjs.org/package/generator-clearphp
+[npm-image]: https://badge.fury.io/js/generator-clearphp.svg
+[npm-downloads]: https://img.shields.io/npm/dm/generator-clearphp.svg
+[depstat-url]: https://david-dm.org/jkphl/generator-clearphp#info=dependencies
+[depstat-image]: https://david-dm.org/jkphl/generator-clearphp.svg
+[devdepstat-url]: https://david-dm.org/jkphl/generator-clearphp#info=devDependencies
+[devdepstat-image]: https://david-dm.org/jkphl/generator-clearphp/dev-status.svg
 [PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md

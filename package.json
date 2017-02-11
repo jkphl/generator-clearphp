@@ -1,14 +1,14 @@
 {
-  "name": "generator-cleanphp",
-  "version": "0.1.0",
-  "description": "Scaffold for Composer based PHP projects with a lot of integrations, advocating a custom Clean Architecture implementation",
+  "name": "generator-clearphp",
+  "version": "0.2.0",
+  "description": "Scaffold for Composer based PHP projects with a lot of integrations, advocating the use of The Clear Architecture (https://jkphl.is/articles/clear-architecture-php)",
   "main": "app/index.js",
   "scripts": {
     "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jkphl/generator-cleanphp.git"
+    "url": "git+https://github.com/jkphl/generator-clearphp.git"
   },
   "keywords": [
     "yeoman-generator",
@@ -30,14 +30,16 @@
     "mkdocs",
     "phpdox",
     "phploc",
-    "readthedocs"
+    "readthedocs",
+    "architecture",
+    "clean-architecture"
   ],
   "author": "Joschi Kuphal <joschi@kuphal.net> (https://jkphl.is)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jkphl/generator-cleanphp/issues"
+    "url": "https://github.com/jkphl/generator-clearphp/issues"
   },
-  "homepage": "https://github.com/jkphl/generator-cleanphp#readme",
+  "homepage": "https://github.com/jkphl/generator-clearphp#readme",
   "files": [
     "generators/apidocs",
     "generators/app",
