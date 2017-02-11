@@ -4,7 +4,7 @@
   "description": "Scaffold for Composer based PHP projects with a lot of integrations, advocating the use of The Clear Architecture (https://jkphl.is/articles/clear-architecture-php)",
   "main": "app/index.js",
   "scripts": {
-    "test": "test"
+    "test": "eslint **/*.js"
   },
   "repository": {
     "type": "git",
