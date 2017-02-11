@@ -1,3 +1,7 @@
+## 0.2.1 Bugfix release (2017-02-11)
+
+* Fixed broken Git repository remote configuration
+
 ## 0.2.0 Maintenance release (2017-02-10)
 
 * Renamed to "clearphp" in favor of https://github.com/jkphl/clear-architecture
