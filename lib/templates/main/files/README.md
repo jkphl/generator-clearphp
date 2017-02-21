@@ -37,7 +37,7 @@ If you discover any security related issues, please email <%- authorEmail %> ins
 
 ## License
 
-Copyright © <%- year %> [<%- authorName%>][author-url] / <%- authorEmail %>. Licensed under the terms of the [<%- license %> license](LICENSE.md).
+Copyright © <%- year %> [<%- authorName%>][author-url] / <%- authorEmail %>. Licensed under the terms of the [<%- license %> license](LICENSE).
 
 
 <% if(github) { %>[travis-image]: https://secure.travis-ci.org/<%- vendor %>/<%- project %>.svg
