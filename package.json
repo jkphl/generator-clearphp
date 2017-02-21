@@ -1,6 +1,6 @@
 {
   "name": "generator-clearphp",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Scaffold for Composer based PHP projects with a lot of integrations, advocating the use of The Clear Architecture (https://jkphl.is/articles/clear-architecture-php)",
   "main": "app/index.js",
   "scripts": {
