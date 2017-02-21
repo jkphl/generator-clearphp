@@ -1,6 +1,6 @@
 # <%- vendor %>/<%- project %>
 
-<% if(github) { %>[![Build Status][travis-image]][travis-url]<% } %> <% if(coverage) { %>[![Coverage Status][coveralls-image]][coveralls-url]<% } %> <% if(scrutinizer) { %>[![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url]<% } %> <% if(codeclimate) { %>[![Code Climate][codeclimate-image]][codeclimate-url]<% } %> <% if(docs) { %>[![Documentation Status][readthedocs-image]][readthedocs-url]<% } %>
+<% if(github) { %>[![Build Status][travis-image]][travis-url]<% } %> <% if(coverage) { %>[![Coverage Status][coveralls-image]][coveralls-url]<% } %> <% if(scrutinizer) { %>[![Scrutinizer Code Quality][scrutinizer-image]][scrutinizer-url]<% } %> <% if(codeclimate) { %>[![Code Climate][codeclimate-image]][codeclimate-url]<% } %> <% if(docs) { %>[![Documentation Status][readthedocs-image]][readthedocs-url]<% } %> [![Clear architecture][clear-architecture-image]][clear-architecture-url]
 
 > <%- description %>
 
@@ -50,6 +50,8 @@ Copyright © <%- year %> [<%- authorName%>][author-url] / <%- authorEmail %>. Li
 [codeclimate-url]: https://scrutinizer-ci.com/g/<%- vendor %>/<%- project %>/?branch=master
 <% } %><% if(docs) { %>[readthedocs-image]: https://readthedocs.org/projects/<%- vendor %>-<%- project %>/badge/?version=latest
 [readthedocs-url]: http://<%- vendor %>-<%- project %>.readthedocs.io/en/latest/?badge=latest<% } %>
+[clear-architecture-image]: https://img.shields.io/badge/Clear%20Architecture-%E2%9C%94-brightgreen.svg
+[clear-architecture-url]: https://github.com/jkphl/clear-architecture
 [author-url]: <%- authorWebsite %>
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
 [PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md

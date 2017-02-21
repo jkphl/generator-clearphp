@@ -1,3 +1,7 @@
+## 0.2.2 Bugfix release (unreleased)
+
+* Added Clear Architecture badge to README ([#6](https://github.com/jkphl/generator-clearphp/issues/6))
+
 ## 0.2.1 Bugfix release (2017-02-11)
 
 * Fixed broken Git repository remote configuration
