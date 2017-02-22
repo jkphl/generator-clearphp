@@ -1,3 +1,8 @@
+## 0.2.3 Maintenance release (2017-02-22)
+
+* Updated dependencies
+* Fixed broken README generation on subsequent runs ([#7](https://github.com/jkphl/generator-clearphp/issues/7))
+
 ## 0.2.2 Bugfix release (2017-02-21)
 
 * Added Clear Architecture badge to README ([#6](https://github.com/jkphl/generator-clearphp/issues/6))

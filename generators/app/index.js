@@ -1,5 +1,4 @@
 const PhpGenerator = require('../../lib/PhpGenerator.js');
-const yosay = require('yosay');
 
 module.exports = class extends PhpGenerator {
     /**
