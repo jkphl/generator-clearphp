@@ -47,7 +47,7 @@ Copyright © <%- year %> [<%- authorName%>][author-url] / <%- authorEmail %>. Li
 <% } %><% if(scrutinizer) { %>[scrutinizer-image]: https://scrutinizer-ci.com/g/<%- vendor %>/<%- project %>/badges/quality-score.png?b=master
 [scrutinizer-url]: https://scrutinizer-ci.com/g/<%- vendor %>/<%- project %>/?branch=master
 <% } %><% if(codeclimate) { %>[codeclimate-image]: https://scrutinizer-ci.com/g/<%- vendor %>/<%- project %>/badges/quality-score.png?b=master
-[codeclimate-url]: https://scrutinizer-ci.com/g/<%- vendor %>/<%- project %>/?branch=master
+[codeclimate-url]: https://lima.codeclimate.com/github/<%- vendor %>/<%- project %>
 <% } %><% if(docs) { %>[readthedocs-image]: https://readthedocs.org/projects/<%- vendor %>-<%- project %>/badge/?version=latest
 [readthedocs-url]: http://<%- vendor %>-<%- project %>.readthedocs.io/en/latest/?badge=latest<% } %>
 [clear-architecture-image]: https://img.shields.io/badge/Clear%20Architecture-%E2%9C%94-brightgreen.svg

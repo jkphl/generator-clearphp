@@ -1,3 +1,7 @@
+## 0.2.4 Maintenance release (unreleased)
+
+* Fixed Code Climate badge URL and credential naming
+
 ## 0.2.3 Maintenance release (2017-02-22)
 
 * Updated dependencies
