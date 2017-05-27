@@ -1,6 +1,7 @@
 ## 0.2.4 Maintenance release (unreleased)
 
 * Fixed Code Climate badge URL and credential naming
+* Added stub folders to test skeleton
 
 ## 0.2.3 Maintenance release (2017-02-22)
 
