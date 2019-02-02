@@ -1,7 +1,11 @@
-## 0.2.4 Maintenance release (unreleased)
+## 1.0.0 Maintenance release (unreleased)
 
-* Fixed Code Climate badge URL and credential naming
-* Added stub folders to test skeleton
+* Fix Code Climate badge URL and credential naming
+* Add stub folders to test skeleton
+* Swich from RawGit to jsDelivr for dependency graph URL 
+* Update Code Climate configuration for Travis 
+* Add binary formats to `.gitattributes`
+* Updated dependencies
 
 ## 0.2.3 Maintenance release (2017-02-22)
 

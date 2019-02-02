@@ -14,7 +14,7 @@ This library requires PHP <%- php %> or later. I recommend using the latest avai
 
 ## Dependencies
 
-![Composer dependency graph](https://rawgit.com/<%- vendor %>/<%- project %>/master/doc/dependencies.svg)
+![Composer dependency graph](https://cdn.jsdelivr.net/gh/<%- vendor %>/<%- project %>@master/doc/dependencies.svg)
 
 ## Quality
 

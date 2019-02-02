@@ -257,7 +257,7 @@ yo clearphp:coverage
 
 #### Composer dependencies
 
-* [satooshi/php-coveralls](https://github.com/satooshi/php-coveralls): PHP client for the Coveralls API
+* [php-coveralls/php-coveralls](https://github.com/php-coveralls/php-coveralls): PHP client for the Coveralls API
 
 
 #### Travis configuration
