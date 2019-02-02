@@ -1,4 +1,4 @@
-## 1.0.0 Maintenance release (unreleased)
+## 1.0.0 Maintenance release (2019-02-02)
 
 * Fix Code Climate badge URL and credential naming
 * Add stub folders to test skeleton
